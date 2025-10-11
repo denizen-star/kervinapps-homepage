@@ -104,12 +104,108 @@
             border-radius: 50%;
             width: 60px;
             height: 60px;
+            min-width: 60px;
+            max-width: 60px;
+            min-height: 60px;
+            max-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             color: #ffffff;
-            font-size: 24px;
+            font-size: 20px;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+        }
+        
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .app-header-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .app-header-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .app-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        .app-subtitle {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .app-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .server-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                max-width: 48px;
+                min-height: 48px;
+                max-height: 48px;
+                font-size: 18px;
+            }
+            
+            .app-title {
+                font-size: 1.5rem;
+            }
+            
+            .app-subtitle {
+                font-size: 1rem;
+            }
+            
+            .tech-badge {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+            
+            .badge-planned {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .server-icon {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                max-width: 44px;
+                min-height: 44px;
+                max-height: 44px;
+                font-size: 16px;
+            }
+            
+            .app-title {
+                font-size: 1.25rem;
+            }
+            
+            .app-subtitle {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -127,19 +223,17 @@
             </div>
 
             <div class="dark-nordic-card p-8 mb-8">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="server-icon">FP</div>
-                    <div class="flex-1">
-                        <h1 class="text-4xl font-semibold text-white mb-3" style="letter-spacing: -0.02em;">
-                            Financial Planner
-                        </h1>
-                        <p class="text-xl text-gray-300 mb-4">
-                            Plan, track, and optimize personal finances
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <span class="tech-badge px-4 py-2">TypeScript</span>
-                            <span class="badge-planned px-4 py-2 text-sm">Planned</span>
+                <div class="app-header">
+                    <div class="app-header-top">
+                        <div class="server-icon">FP</div>
+                        <div class="app-header-content">
+                            <h1 class="app-title">Financial Planner</h1>
+                            <p class="app-subtitle">Plan, track, and optimize personal finances</p>
                         </div>
+                    </div>
+                    <div class="app-badges">
+                        <span class="tech-badge px-4 py-2">TypeScript</span>
+                        <span class="badge-planned px-4 py-2 text-sm">Planned</span>
                     </div>
                 </div>
             </div>
