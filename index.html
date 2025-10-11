@@ -282,6 +282,7 @@
             border-radius: 50%;
             width: 40px;
             height: 40px;
+            min-width: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -289,6 +290,31 @@
             color: #ffffff;
             border: 2px solid #4a5568;
             flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 640px) {
+            .server-icon {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+                font-size: 13px;
+            }
+            
+            .dark-nordic-card h3 {
+                font-size: 1.125rem;
+                line-height: 1.4;
+            }
+            
+            .tech-badge {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+            
+            .badge-live, .badge-dev, .badge-planned {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
         }
         
         .app-card {

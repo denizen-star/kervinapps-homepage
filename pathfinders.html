@@ -211,12 +211,98 @@
             border-radius: 50%;
             width: 60px;
             height: 60px;
+            min-width: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             color: #ffffff;
             font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .app-header-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .app-header-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .app-title {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        .app-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .app-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .server-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                font-size: 20px;
+            }
+            
+            .app-title {
+                font-size: 1.75rem;
+            }
+            
+            .app-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .tech-badge, .badge-live {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .app-header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .server-icon {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                font-size: 18px;
+            }
+            
+            .app-title {
+                font-size: 1.5rem;
+            }
+            
+            .app-subtitle {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -247,19 +333,21 @@
 
             <!-- Header -->
             <div class="dark-nordic-card p-8 mb-8">
-                <div class="flex items-start gap-6 mb-6">
-                    <div class="server-icon">PF</div>
-                    <div class="flex-1">
-                        <h1 class="text-4xl font-semibold text-white mb-3" style="letter-spacing: -0.02em;">
-                            Pathfinders
-                        </h1>
-                        <p class="text-xl text-gray-300 mb-4">
-                            Professional networking data collection platform
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <span class="tech-badge px-4 py-2">TypeScript</span>
-                            <span class="badge-live px-4 py-2 text-sm">Live</span>
+                <div class="app-header">
+                    <div class="app-header-top">
+                        <div class="server-icon">PF</div>
+                        <div class="app-header-content">
+                            <h1 class="app-title">
+                                Pathfinders
+                            </h1>
+                            <p class="app-subtitle">
+                                Professional networking data collection platform
+                            </p>
                         </div>
+                    </div>
+                    <div class="app-badges">
+                        <span class="tech-badge px-4 py-2">TypeScript</span>
+                        <span class="badge-live px-4 py-2 text-sm">Live</span>
                     </div>
                 </div>
             </div>
