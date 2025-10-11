@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KervinApps - Professional Tools for Modern Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1d23;
+            color: #e4e6eb;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background Shapes */
+        .abstract-shape {
+            position: fixed;
+            opacity: 0.25;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .abstract-shape.circle {
+            border-radius: 50%;
+        }
+        
+        .abstract-shape.semi-circle {
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #6b7a8f;
+            top: -250px;
+            left: -250px;
+            animation: float-slow 25s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 200px;
+            background: #7a8a9f;
+            top: 400px;
+            right: -200px;
+            animation: float-slow 30s ease-in-out infinite 5s;
+        }
+        
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #5a6a7f;
+            bottom: -175px;
+            left: 150px;
+            animation: float-slow 35s ease-in-out infinite 10s;
+        }
+        
+        .shape-4 {
+            width: 450px;
+            height: 225px;
+            background: #6b7a8f;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float-slow 28s ease-in-out infinite 3s;
+        }
+        
+        .shape-5 {
+            width: 300px;
+            height: 300px;
+            background: #7a8a9f;
+            top: 50%;
+            left: 50px;
+            animation: float-slow 32s ease-in-out infinite 8s;
+        }
+        
+        .shape-6 {
+            width: 380px;
+            height: 190px;
+            background: #5a6a7f;
+            bottom: 200px;
+            right: 100px;
+            animation: float-slow 27s ease-in-out infinite 12s;
+        }
+        
+        .shape-7 {
+            width: 420px;
+            height: 210px;
+            background: #8a9aaf;
+            top: 100px;
+            right: 200px;
+            animation: float-slow 29s ease-in-out infinite 6s;
+        }
+        
+        .shape-8 {
+            width: 320px;
+            height: 320px;
+            background: #6b7a8f;
+            bottom: 300px;
+            left: -100px;
+            animation: float-slow 33s ease-in-out infinite 9s;
+        }
+        
+        .shape-9 {
+            width: 280px;
+            height: 140px;
+            background: #7a8a9f;
+            top: 600px;
+            left: 40%;
+            animation: float-slow 31s ease-in-out infinite 11s;
+        }
+        
+        .shape-10 {
+            width: 360px;
+            height: 360px;
+            background: #5a6a7f;
+            top: 50%;
+            right: -150px;
+            animation: float-slow 34s ease-in-out infinite 7s;
+        }
+        
+        .shape-11 {
+            width: 400px;
+            height: 200px;
+            background: #8a9aaf;
+            bottom: 100px;
+            left: 30%;
+            animation: float-slow 26s ease-in-out infinite 4s;
+        }
+        
+        .shape-12 {
+            width: 340px;
+            height: 340px;
+            background: #6b7a8f;
+            top: 800px;
+            right: 50px;
+            animation: float-slow 36s ease-in-out infinite 13s;
+        }
+        
+        @keyframes float-slow {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-15px) rotate(5deg) scale(1.02);
+            }
+            66% { 
+                transform: translateY(10px) rotate(-3deg) scale(0.98);
+            }
+        }
+        
+        /* Content styling */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dark-nordic-card {
+            background: rgba(36, 41, 49, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-nordic-card:hover {
+            background: rgba(36, 41, 49, 0.7);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .tab-button {
+            background: rgba(42, 47, 58, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #8b92a3;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tab-button:hover {
+            background: rgba(42, 47, 58, 0.6);
+            color: #c7cad1;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        
+        .tab-button.active {
+            background: rgba(74, 85, 104, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(74, 85, 104, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .nordic-button {
+            background: #3a4556;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #4a5568;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nordic-button:hover {
+            background: #4a5568;
+            border-color: #5a6578;
+        }
+        
+        .nordic-button-primary {
+            background: #4a5568;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nordic-button-primary:hover {
+            background: #5a6578;
+            transform: translateY(-1px);
+        }
+        
+        .badge-live {
+            background: #2d7d5e;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .badge-dev {
+            background: #8b7332;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .badge-planned {
+            background: #4a5568;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .tech-badge {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3a3f4b, transparent);
+        }
+        
+        .server-icon {
+            background: #3a4556;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #ffffff;
+            border: 2px solid #4a5568;
+            flex-shrink: 0;
+        }
+        
+        .app-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .app-card-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .app-card-description {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Shapes -->
+    <div class="abstract-shape shape-1 circle"></div>
+    <div class="abstract-shape shape-2 semi-circle"></div>
+    <div class="abstract-shape shape-3 circle"></div>
+    <div class="abstract-shape shape-4 semi-circle"></div>
+    <div class="abstract-shape shape-5 circle"></div>
+    <div class="abstract-shape shape-6 semi-circle"></div>
+    <div class="abstract-shape shape-7 semi-circle"></div>
+    <div class="abstract-shape shape-8 circle"></div>
+    <div class="abstract-shape shape-9 semi-circle"></div>
+    <div class="abstract-shape shape-10 circle"></div>
+    <div class="abstract-shape shape-11 semi-circle"></div>
+    <div class="abstract-shape shape-12 circle"></div>
+    
+    <!-- Content -->
+    <div class="content-wrapper p-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="flex items-center gap-4 mb-12">
+                <div class="server-icon text-lg">K</div>
+                <div>
+                    <h1 class="text-4xl font-semibold text-white mb-1" style="letter-spacing: -0.02em;">
+                        KervinApps
+                    </h1>
+                    <p class="text-base text-gray-400 font-normal">
+                        Professional tools for modern life
+                    </p>
+                </div>
+            </div>
+
+            <div class="divider mb-10"></div>
+
+            <!-- Category Tabs -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <div class="flex gap-3 mb-10 flex-wrap">
+                    <button onclick="showTab('networking')" class="tab-button active px-5 py-3 text-sm">
+                        # networking
+                    </button>
+                    <button onclick="showTab('lifestyle')" class="tab-button px-5 py-3 text-sm">
+                        # lifestyle
+                    </button>
+                    <button onclick="showTab('productivity')" class="tab-button px-5 py-3 text-sm">
+                        # productivity
+                    </button>
+                    <button onclick="showTab('planning')" class="tab-button px-5 py-3 text-sm">
+                        # planning
+                    </button>
+                </div>
+
+                <!-- Networking Category -->
+                <div id="networking" class="tab-content active">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-white mb-3">Networking & Connections</h2>
+                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
+                            Platforms that help you build meaningful professional relationships
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Pathfinders -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">PF</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Pathfinders
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-live px-3 py-1.5 text-xs">
+                                                Live
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Professional networking data collection platform designed to facilitate meaningful connections through intelligent demographic matching.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">Next.js 14</span>
+                                            <span class="tech-badge px-3 py-1.5">React 18</span>
+                                            <span class="tech-badge px-3 py-1.5">Tailwind CSS</span>
+                                            <span class="tech-badge px-3 py-1.5">Google Sheets API</span>
+                                            <span class="tech-badge px-3 py-1.5">Netlify</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="https://pathfinders.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
+                                        Try Pathfinders
+                                    </a>
+                                    <a href="pathfinders.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
+                                        Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Community Builder -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">CB</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Community Builder App
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-dev px-3 py-1.5 text-xs">
+                                                In Development
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        AI-powered, hyper-local networking that creates meaningful in-person connections within professional hubs.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">React</span>
+                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
+                                            <span class="tech-badge px-3 py-1.5">AI/ML</span>
+                                            <span class="tech-badge px-3 py-1.5">Real-time Events</span>
+                                            <span class="tech-badge px-3 py-1.5">Mobile-First</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="community-builder.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lifestyle Category -->
+                <div id="lifestyle" class="tab-content">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-white mb-3">Lifestyle & Discovery</h2>
+                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
+                            Apps that enhance your daily experiences and help you discover new opportunities
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Toronto Guide -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">TG</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Toronto Guide
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                Python
+                                            </span>
+                                            <span class="badge-dev px-3 py-1.5 text-xs">
+                                                In Development
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Curated, Swiss-designed concierge for Toronto's best experiences with systematic curation and clean UX.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">Python</span>
+                                            <span class="tech-badge px-3 py-1.5">Static Site</span>
+                                            <span class="tech-badge px-3 py-1.5">CSV Data</span>
+                                            <span class="tech-badge px-3 py-1.5">Netlify</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="https://to-guide.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
+                                        Try Toronto Guide
+                                    </a>
+                                    <a href="toronto-guide.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
+                                        Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scheduling Gay Run Club -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">RC</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Scheduling Gay Run Club
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-planned px-3 py-1.5 text-xs">
+                                                Planned
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Community event management platform designed to coordinate and manage running club events for the LGBTQ+ community.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">React</span>
+                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
+                                            <span class="tech-badge px-3 py-1.5">Event Management</span>
+                                            <span class="tech-badge px-3 py-1.5">Community Features</span>
+                                            <span class="tech-badge px-3 py-1.5">Safety Tools</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="scheduling-gay-run-club.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productivity Category -->
+                <div id="productivity" class="tab-content">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-white mb-3">Productivity Tools</h2>
+                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
+                            Apps designed to enhance your efficiency and help you accomplish more
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Optimizer -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">OP</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Optimizer
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-dev px-3 py-1.5 text-xs">
+                                                In Development
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Calendar-first habit assistant that schedules minimum-viable actions into real, available time with evidence-based reviews.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">React</span>
+                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
+                                            <span class="tech-badge px-3 py-1.5">MUI</span>
+                                            <span class="tech-badge px-3 py-1.5">Node.js/Express</span>
+                                            <span class="tech-badge px-3 py-1.5">PostgreSQL</span>
+                                            <span class="tech-badge px-3 py-1.5">Google Calendar API</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="https://optimizer.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
+                                        Try Optimizer
+                                    </a>
+                                    <a href="optimizer.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
+                                        Learn More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Hunting Follow-ups -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">JH</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Job Hunting Follow-ups
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-planned px-3 py-1.5 text-xs">
+                                                Planned
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Systematize outreach and follow-ups to increase interview conversion with daily pipeline management and templates.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">React</span>
+                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
+                                            <span class="tech-badge px-3 py-1.5">Email Integration</span>
+                                            <span class="tech-badge px-3 py-1.5">CRM Features</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="job-hunting.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planning Category -->
+                <div id="planning" class="tab-content">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-white mb-3">Financial Planning</h2>
+                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
+                            Tools to help you manage your finances and plan for the future
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Financial Planner -->
+                        <div class="dark-nordic-card p-6 app-card">
+                            <div class="app-card-content">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">FP</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
+                                            Financial Planner
+                                        </h3>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="tech-badge px-3 py-1.5">
+                                                TypeScript
+                                            </span>
+                                            <span class="badge-planned px-3 py-1.5 text-xs">
+                                                Planned
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-card-description">
+                                    <p class="text-gray-300 mb-6 leading-relaxed text-sm">
+                                        Plan, track, and optimize personal finances with clarity and ease using a lightweight, actionable system.
+                                    </p>
+                                    <div class="mb-6">
+                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
+                                            Technology Stack
+                                        </h4>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="tech-badge px-3 py-1.5">React</span>
+                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
+                                            <span class="tech-badge px-3 py-1.5">Financial APIs</span>
+                                            <span class="tech-badge px-3 py-1.5">Data Visualization</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="financial-planner.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="divider mt-12 mb-8"></div>
+            <div class="text-center">
+                <p class="text-sm text-gray-500 mb-4 font-normal">
+                    © 2024 KervinApps. All rights reserved.
+                </p>
+                <div class="flex justify-center gap-6 text-sm text-gray-400 flex-wrap">
+                    <a href="https://pathfinders.kervinapps.com" class="hover:text-gray-300 transition-colors duration-200">pathfinders.kervinapps.com</a>
+                    <a href="https://optimizer.kervinapps.com" class="hover:text-gray-300 transition-colors duration-200">optimizer.kervinapps.com</a>
+                    <a href="https://to-guide.kervinapps.com" class="hover:text-gray-300 transition-colors duration-200">to-guide.kervinapps.com</a>
+                    <a href="https://sxp.kervinapps.com" class="hover:text-gray-300 transition-colors duration-200">sxp.kervinapps.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(category) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabBtns = document.querySelectorAll('.tab-button');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(category).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

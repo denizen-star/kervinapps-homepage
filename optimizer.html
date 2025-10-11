@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizer - Learn More | KervinApps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1d23;
+            color: #e4e6eb;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .abstract-shape {
+            position: fixed;
+            opacity: 0.15;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .abstract-shape.circle {
+            border-radius: 50%;
+        }
+        
+        .abstract-shape.semi-circle {
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #4a5568;
+            top: -250px;
+            left: -250px;
+            animation: float-slow 25s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 200px;
+            background: #5a6578;
+            top: 400px;
+            right: -200px;
+            animation: float-slow 30s ease-in-out infinite 5s;
+        }
+        
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #3a4556;
+            bottom: -175px;
+            left: 150px;
+            animation: float-slow 35s ease-in-out infinite 10s;
+        }
+        
+        @keyframes float-slow {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-15px) rotate(5deg) scale(1.02);
+            }
+            66% { 
+                transform: translateY(10px) rotate(-3deg) scale(0.98);
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dark-nordic-card {
+            background: #242931;
+            border: 1px solid #3a3f4b;
+            border-radius: 16px;
+        }
+        
+        .badge-dev {
+            background: #8b7332;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .tech-badge {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .nordic-button-primary {
+            background: #4a5568;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nordic-button-primary:hover {
+            background: #5a6578;
+            transform: translateY(-1px);
+        }
+        
+        .server-icon {
+            background: #8b7332;
+            border: 2px solid #a08842;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="abstract-shape shape-1 circle"></div>
+    <div class="abstract-shape shape-2 semi-circle"></div>
+    <div class="abstract-shape shape-3 circle"></div>
+    
+    <div class="content-wrapper p-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                    ← Back to all apps
+                </a>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="server-icon">OP</div>
+                    <div class="flex-1">
+                        <h1 class="text-4xl font-semibold text-white mb-3" style="letter-spacing: -0.02em;">
+                            Optimizer
+                        </h1>
+                        <p class="text-xl text-gray-300 mb-4">
+                            Calendar-first habit assistant
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <span class="tech-badge px-4 py-2">TypeScript</span>
+                            <span class="badge-dev px-4 py-2 text-sm">In Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-4">Overview</h2>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Optimizer is a calendar-first habit assistant that schedules minimum-viable actions into real, available time with evidence-based reviews. Unlike traditional habit trackers, Optimizer integrates directly with your calendar to ensure habits fit into your actual schedule.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    The application uses smart algorithms to find optimal times for your habits based on your calendar availability, energy levels, and past performance data.
+                </p>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Calendar Integration</h3>
+                        <p class="text-gray-300 text-sm">Seamless sync with Google Calendar for real-time scheduling</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Minimum Viable Actions</h3>
+                        <p class="text-gray-300 text-sm">Break habits into smallest possible actions for consistency</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Evidence-Based Reviews</h3>
+                        <p class="text-gray-300 text-sm">Track progress and adjust based on actual performance data</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Smart Scheduling</h3>
+                        <p class="text-gray-300 text-sm">AI-powered time slot recommendations based on your patterns</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Technology Stack</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="tech-badge px-4 py-3 text-center">React</div>
+                    <div class="tech-badge px-4 py-3 text-center">TypeScript</div>
+                    <div class="tech-badge px-4 py-3 text-center">Material-UI</div>
+                    <div class="tech-badge px-4 py-3 text-center">Node.js/Express</div>
+                    <div class="tech-badge px-4 py-3 text-center">PostgreSQL</div>
+                    <div class="tech-badge px-4 py-3 text-center">Google Calendar API</div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="https://optimizer.kervinapps.com" target="_blank" class="nordic-button-primary px-8 py-4 text-lg">
+                    Try Optimizer →
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

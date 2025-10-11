@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinders - Learn More | KervinApps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1d23;
+            color: #e4e6eb;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background Shapes */
+        .abstract-shape {
+            position: fixed;
+            opacity: 0.25;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .abstract-shape.circle {
+            border-radius: 50%;
+        }
+        
+        .abstract-shape.semi-circle {
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #6b7a8f;
+            top: -250px;
+            left: -250px;
+            animation: float-slow 25s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 200px;
+            background: #7a8a9f;
+            top: 400px;
+            right: -200px;
+            animation: float-slow 30s ease-in-out infinite 5s;
+        }
+        
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #5a6a7f;
+            bottom: -175px;
+            left: 150px;
+            animation: float-slow 35s ease-in-out infinite 10s;
+        }
+        
+        .shape-4 {
+            width: 450px;
+            height: 225px;
+            background: #6b7a8f;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float-slow 28s ease-in-out infinite 3s;
+        }
+        
+        .shape-5 {
+            width: 300px;
+            height: 300px;
+            background: #7a8a9f;
+            top: 50%;
+            left: 50px;
+            animation: float-slow 32s ease-in-out infinite 8s;
+        }
+        
+        .shape-6 {
+            width: 380px;
+            height: 190px;
+            background: #5a6a7f;
+            bottom: 200px;
+            right: 100px;
+            animation: float-slow 27s ease-in-out infinite 12s;
+        }
+        
+        .shape-7 {
+            width: 420px;
+            height: 210px;
+            background: #8a9aaf;
+            top: 100px;
+            right: 200px;
+            animation: float-slow 29s ease-in-out infinite 6s;
+        }
+        
+        .shape-8 {
+            width: 320px;
+            height: 320px;
+            background: #6b7a8f;
+            bottom: 300px;
+            left: -100px;
+            animation: float-slow 33s ease-in-out infinite 9s;
+        }
+        
+        .shape-9 {
+            width: 280px;
+            height: 140px;
+            background: #7a8a9f;
+            top: 600px;
+            left: 40%;
+            animation: float-slow 31s ease-in-out infinite 11s;
+        }
+        
+        .shape-10 {
+            width: 360px;
+            height: 360px;
+            background: #5a6a7f;
+            top: 50%;
+            right: -150px;
+            animation: float-slow 34s ease-in-out infinite 7s;
+        }
+        
+        .shape-11 {
+            width: 400px;
+            height: 200px;
+            background: #8a9aaf;
+            bottom: 100px;
+            left: 30%;
+            animation: float-slow 26s ease-in-out infinite 4s;
+        }
+        
+        .shape-12 {
+            width: 340px;
+            height: 340px;
+            background: #6b7a8f;
+            top: 800px;
+            right: 50px;
+            animation: float-slow 36s ease-in-out infinite 13s;
+        }
+        
+        @keyframes float-slow {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-15px) rotate(5deg) scale(1.02);
+            }
+            66% { 
+                transform: translateY(10px) rotate(-3deg) scale(0.98);
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dark-nordic-card {
+            background: rgba(36, 41, 49, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .dark-nordic-card:hover {
+            background: rgba(36, 41, 49, 0.7);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .badge-live {
+            background: #2d7d5e;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .tech-badge {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .nordic-button-primary {
+            background: #4a5568;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nordic-button-primary:hover {
+            background: #5a6578;
+            transform: translateY(-1px);
+        }
+        
+        .server-icon {
+            background: #2d7d5e;
+            border: 2px solid #3a9975;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Shapes -->
+    <div class="abstract-shape shape-1 circle"></div>
+    <div class="abstract-shape shape-2 semi-circle"></div>
+    <div class="abstract-shape shape-3 circle"></div>
+    <div class="abstract-shape shape-4 semi-circle"></div>
+    <div class="abstract-shape shape-5 circle"></div>
+    <div class="abstract-shape shape-6 semi-circle"></div>
+    <div class="abstract-shape shape-7 semi-circle"></div>
+    <div class="abstract-shape shape-8 circle"></div>
+    <div class="abstract-shape shape-9 semi-circle"></div>
+    <div class="abstract-shape shape-10 circle"></div>
+    <div class="abstract-shape shape-11 semi-circle"></div>
+    <div class="abstract-shape shape-12 circle"></div>
+    
+    <!-- Content -->
+    <div class="content-wrapper p-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Back Button -->
+            <div class="mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                    ← Back to all apps
+                </a>
+            </div>
+
+            <!-- Header -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="server-icon">PF</div>
+                    <div class="flex-1">
+                        <h1 class="text-4xl font-semibold text-white mb-3" style="letter-spacing: -0.02em;">
+                            Pathfinders
+                        </h1>
+                        <p class="text-xl text-gray-300 mb-4">
+                            Professional networking data collection platform
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <span class="tech-badge px-4 py-2">TypeScript</span>
+                            <span class="badge-live px-4 py-2 text-sm">Live</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-4">Overview</h2>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Pathfinders is a professional networking data collection platform designed to facilitate meaningful connections through intelligent demographic matching. The application streamlines the process of collecting and organizing professional contact information at networking events.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    Built with modern web technologies, Pathfinders offers a clean, intuitive interface that makes data collection effortless while maintaining professional standards and data privacy.
+                </p>
+            </div>
+
+            <!-- Key Features -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Smart Data Collection</h3>
+                        <p class="text-gray-300 text-sm">Intuitive forms for capturing professional information efficiently</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Real-time Sync</h3>
+                        <p class="text-gray-300 text-sm">Automatic synchronization with Google Sheets for easy data management</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Demographic Matching</h3>
+                        <p class="text-gray-300 text-sm">Intelligent algorithms to facilitate meaningful professional connections</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Modern UI/UX</h3>
+                        <p class="text-gray-300 text-sm">Clean, professional interface with glassmorphism design principles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Technology Stack</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="tech-badge px-4 py-3 text-center">Next.js 14</div>
+                    <div class="tech-badge px-4 py-3 text-center">React 18</div>
+                    <div class="tech-badge px-4 py-3 text-center">TypeScript</div>
+                    <div class="tech-badge px-4 py-3 text-center">Tailwind CSS</div>
+                    <div class="tech-badge px-4 py-3 text-center">Google Sheets API</div>
+                    <div class="tech-badge px-4 py-3 text-center">Netlify</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center">
+                <a href="https://pathfinders.kervinapps.com" target="_blank" class="nordic-button-primary px-8 py-4 text-lg">
+                    Try Pathfinders →
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
