@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Planner - Design Specification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+            background: #0D1117;
+            color: #C9D1D9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            border-bottom: 2px solid #2ECC71;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2ECC71;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            font-size: 1rem;
+            color: #8B949E;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #2ECC71;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .color-swatch {
+            height: 120px;
+        }
+
+        .color-info {
+            padding: 15px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+
+        .color-hex {
+            font-size: 0.9rem;
+            color: #8B949E;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .color-usage {
+            font-size: 0.85rem;
+            color: #8B949E;
+            margin-top: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .logo-showcase {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .logo svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ui-preview {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .btn-primary {
+            background: #2ECC71;
+            color: #0D1117;
+        }
+
+        .btn-primary:hover {
+            background: #27AE60;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2ECC71;
+            border: 2px solid #2ECC71;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .btn-danger {
+            background: #E74C3C;
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            background: #C0392B;
+        }
+
+        .typography-sample {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .type-heading-1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .type-heading-2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #C9D1D9;
+            margin-bottom: 10px;
+        }
+
+        .type-body {
+            font-size: 1rem;
+            color: #8B949E;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .type-code {
+            font-size: 0.95rem;
+            color: #2ECC71;
+            font-family: 'SF Mono', monospace;
+            background: #0D1117;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+        }
+
+        .icon-item svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon-label {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #8B949E;
+        }
+
+        .design-principles {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .principle {
+            margin-bottom: 25px;
+        }
+
+        .principle-title {
+            color: #2ECC71;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .principle-desc {
+            color: #8B949E;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .chart-demo {
+            background: #161B22;
+            border: 1px solid #30363D;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .bar-label {
+            width: 100px;
+            color: #C9D1D9;
+            font-size: 0.9rem;
+        }
+
+        .bar-visual {
+            flex: 1;
+            height: 30px;
+            background: #2ECC71;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Financial Planner</h1>
+            <p class="tagline">Design System Specification v1.0</p>
+        </div>
+
+        <!-- Design Principles -->
+        <div class="section">
+            <h2 class="section-title">Design Principles</h2>
+            <div class="design-principles">
+                <div class="principle">
+                    <div class="principle-title">1. GitHub's Dark Mode Excellence</div>
+                    <div class="principle-desc">Deep charcoal background with carefully calibrated contrast ratios ensures comfortable extended viewing. Text hierarchy is maintained through weight and color variations rather than decorative elements.</div>
+                </div>
+                <div class="principle">
+                    <div class="principle-title">2. JetBrains' Data Visualization</div>
+                    <div class="principle-desc">Financial data is presented with clinical precision. Charts and graphs use flat colors with strong borders for clarity. Green indicates growth/positive states, red for negative.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="section">
+            <h2 class="section-title">Logo</h2>
+            <div class="logo-showcase">
+                <div class="logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="120" width="25" height="50" fill="#2ECC71"/>
+                        <rect x="75" y="90" width="25" height="80" fill="#2ECC71"/>
+                        <rect x="110" y="65" width="25" height="105" fill="#2ECC71"/>
+                        <rect x="145" y="40" width="25" height="130" fill="#2ECC71"/>
+                        <path d="M 52 115 L 87 85 L 122 60 L 157 35" stroke="#2ECC71" stroke-width="4" fill="none"/>
+                        <circle cx="52" cy="115" r="5" fill="#2ECC71"/>
+                        <circle cx="87" cy="85" r="5" fill="#2ECC71"/>
+                        <circle cx="122" cy="60" r="5" fill="#2ECC71"/>
+                        <circle cx="157" cy="35" r="5" fill="#2ECC71"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #0D1117;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Charcoal</div>
+                        <div class="color-hex">#0D1117</div>
+                        <div class="color-usage">Primary background, base layer</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #161B22;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Dark Slate</div>
+                        <div class="color-hex">#161B22</div>
+                        <div class="color-usage">Cards, panels, elevated surfaces</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #30363D;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Border Grey</div>
+                        <div class="color-hex">#30363D</div>
+                        <div class="color-usage">Borders, dividers, separators</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #2ECC71;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Growth Green</div>
+                        <div class="color-hex">#2ECC71</div>
+                        <div class="color-usage">Positive values, growth, success</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #C9D1D9;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary Text</div>
+                        <div class="color-hex">#C9D1D9</div>
+                        <div class="color-usage">Body text, main content</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #8B949E;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary Text</div>
+                        <div class="color-hex">#8B949E</div>
+                        <div class="color-usage">Labels, metadata, captions</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #E74C3C;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Loss Red</div>
+                        <div class="color-hex">#E74C3C</div>
+                        <div class="color-usage">Negative values, losses, alerts</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #F39C12;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Warning Orange</div>
+                        <div class="color-hex">#F39C12</div>
+                        <div class="color-usage">Warnings, attention required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-sample">
+                <div class="type-heading-1">Financial Overview</div>
+                <p style="color: #8B949E; margin-bottom: 20px;">SF Mono, 700 weight, 2.5rem</p>
+                
+                <div class="type-heading-2">Account Summary</div>
+                <p style="color: #8B949E; margin-bottom: 20px;">SF Mono, 600 weight, 2rem</p>
+                
+                <p class="type-body">Financial data requires exceptional clarity. All numbers are displayed in monospace fonts to ensure proper alignment and readability in tables and lists.</p>
+                <p style="color: #8B949E; margin-bottom: 20px;">System UI, 400 weight, 1rem</p>
+                
+                <p><span class="type-code">$125,430.50</span></p>
+                <p style="color: #8B949E;">SF Mono, 400 weight, 0.95rem</p>
+            </div>
+        </div>
+
+        <!-- UI Components -->
+        <div class="section">
+            <h2 class="section-title">UI Components</h2>
+            <div class="ui-preview">
+                <h3 style="color: #C9D1D9; margin-bottom: 15px;">Action Buttons</h3>
+                <div class="button-group">
+                    <button class="btn btn-primary">Calculate</button>
+                    <button class="btn btn-secondary">Export Report</button>
+                    <button class="btn btn-danger">Clear Data</button>
+                </div>
+
+                <div class="chart-demo">
+                    <h3 style="color: #C9D1D9; margin-bottom: 20px;">Data Visualization Example</h3>
+                    <div class="bar">
+                        <div class="bar-label">Savings</div>
+                        <div class="bar-visual" style="width: 85%;"></div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-label">Investment</div>
+                        <div class="bar-visual" style="width: 65%;"></div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-label">Emergency</div>
+                        <div class="bar-visual" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icons -->
+        <div class="section">
+            <h2 class="section-title">Icon System</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="12" y="28" width="6" height="12" fill="#2ECC71"/>
+                        <rect x="21" y="20" width="6" height="20" fill="#2ECC71"/>
+                        <rect x="30" y="15" width="6" height="25" fill="#2ECC71"/>
+                    </svg>
+                    <div class="icon-label">Growth</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="12" fill="none" stroke="#2ECC71" stroke-width="2"/>
+                        <path d="M 24 16 L 24 24 L 30 24" stroke="#2ECC71" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Time</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 12 24 L 24 12 L 36 24 L 36 36 L 12 36 Z" fill="none" stroke="#2ECC71" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Assets</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="14" y="10" width="20" height="28" rx="2" fill="none" stroke="#2ECC71" stroke-width="2"/>
+                        <line x1="20" y1="16" x2="28" y2="16" stroke="#2ECC71" stroke-width="2"/>
+                        <line x1="20" y1="22" x2="28" y2="22" stroke="#2ECC71" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Report</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizer - Design Specification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+            background: #0C0F14;
+            color: #D1D5DB;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            border-bottom: 2px solid #CCFF00;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #CCFF00;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            font-size: 1rem;
+            color: #6B7280;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #CCFF00;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .color-swatch {
+            height: 120px;
+        }
+
+        .color-info {
+            padding: 15px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+
+        .color-hex {
+            font-size: 0.9rem;
+            color: #6B7280;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .color-usage {
+            font-size: 0.85rem;
+            color: #6B7280;
+            margin-top: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .logo-showcase {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .logo svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ui-preview {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .btn-primary {
+            background: #CCFF00;
+            color: #0C0F14;
+        }
+
+        .btn-primary:hover {
+            background: #B8E600;
+            box-shadow: 0 4px 12px rgba(204, 255, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #CCFF00;
+            border: 2px solid #CCFF00;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(204, 255, 0, 0.1);
+        }
+
+        .btn-danger {
+            background: #EF4444;
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            background: #DC2626;
+        }
+
+        .typography-sample {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .type-heading-1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .type-heading-2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #D1D5DB;
+            margin-bottom: 10px;
+        }
+
+        .type-body {
+            font-size: 1rem;
+            color: #6B7280;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .type-code {
+            font-size: 0.95rem;
+            color: #CCFF00;
+            font-family: 'SF Mono', monospace;
+            background: #0C0F14;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+        }
+
+        .icon-item svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon-label {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+
+        .design-principles {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .principle {
+            margin-bottom: 25px;
+        }
+
+        .principle-title {
+            color: #CCFF00;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .principle-desc {
+            color: #6B7280;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .metric-card {
+            background: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #CCFF00;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #6B7280;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-change {
+            color: #CCFF00;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Optimizer</h1>
+            <p class="tagline">Design System Specification v1.0</p>
+        </div>
+
+        <!-- Design Principles -->
+        <div class="section">
+            <h2 class="section-title">Design Principles</h2>
+            <div class="design-principles">
+                <div class="principle">
+                    <div class="principle-title">1. DataDog's Performance Metrics</div>
+                    <div class="principle-desc">Large, bold numerical displays prioritize key performance indicators. Lime green accent signals optimal performance and efficiency gains, creating immediate visual feedback.</div>
+                </div>
+                <div class="principle">
+                    <div class="principle-title">2. Vercel's Minimalist Dashboard</div>
+                    <div class="principle-desc">Extreme reduction of visual noise. Every element serves a functional purpose. High-contrast lime on dark provides maximum readability for data-intensive displays.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="section">
+            <h2 class="section-title">Logo</h2>
+            <div class="logo-showcase">
+                <div class="logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="60" fill="none" stroke="#CCFF00" stroke-width="6"/>
+                        <circle cx="100" cy="100" r="12" fill="#CCFF00"/>
+                        <line x1="100" y1="100" x2="100" y2="50" stroke="#CCFF00" stroke-width="5"/>
+                        <line x1="100" y1="100" x2="140" y2="120" stroke="#CCFF00" stroke-width="5"/>
+                        <path d="M 130 45 L 145 30 M 135 40 L 150 40 M 135 40 L 135 55" stroke="#CCFF00" stroke-width="4"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #0C0F14;"></div>
+                    <div class="color-info">
+                        <div class="color-name">True Black</div>
+                        <div class="color-hex">#0C0F14</div>
+                        <div class="color-usage">Primary background, base layer</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1F2937;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Grey</div>
+                        <div class="color-hex">#1F2937</div>
+                        <div class="color-usage">Elevated surfaces, cards</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #374151;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Border Grey</div>
+                        <div class="color-hex">#374151</div>
+                        <div class="color-usage">Borders, separators</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #CCFF00;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Lime Green</div>
+                        <div class="color-hex">#CCFF00</div>
+                        <div class="color-usage">Primary accent, metrics, actions</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #D1D5DB;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Light Text</div>
+                        <div class="color-hex">#D1D5DB</div>
+                        <div class="color-usage">Primary text, content</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #6B7280;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Medium Text</div>
+                        <div class="color-hex">#6B7280</div>
+                        <div class="color-usage">Secondary text, labels</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #EF4444;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Alert Red</div>
+                        <div class="color-hex">#EF4444</div>
+                        <div class="color-usage">Warnings, inefficiencies</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #F59E0B;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Warning Amber</div>
+                        <div class="color-hex">#F59E0B</div>
+                        <div class="color-usage">Caution states, attention</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-sample">
+                <div class="type-heading-1">Performance Metrics</div>
+                <p style="color: #6B7280; margin-bottom: 20px;">SF Mono, 700 weight, 2.5rem</p>
+                
+                <div class="type-heading-2">System Status</div>
+                <p style="color: #6B7280; margin-bottom: 20px;">SF Mono, 600 weight, 2rem</p>
+                
+                <p class="type-body">Optimization requires precision. Typography is engineered for high-speed data scanning and immediate comprehension of system performance.</p>
+                <p style="color: #6B7280; margin-bottom: 20px;">System UI, 400 weight, 1rem</p>
+                
+                <p><span class="type-code">98.7% efficiency</span></p>
+                <p style="color: #6B7280;">SF Mono, 400 weight, 0.95rem</p>
+            </div>
+        </div>
+
+        <!-- UI Components -->
+        <div class="section">
+            <h2 class="section-title">UI Components</h2>
+            <div class="ui-preview">
+                <h3 style="color: #D1D5DB; margin-bottom: 15px;">Control Buttons</h3>
+                <div class="button-group">
+                    <button class="btn btn-primary">Optimize Now</button>
+                    <button class="btn btn-secondary">Run Analysis</button>
+                    <button class="btn btn-danger">Reset</button>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">2.4x</div>
+                    <div class="metric-label">Performance Gain</div>
+                    <div class="metric-change">↑ 15% from baseline</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icons -->
+        <div class="section">
+            <h2 class="section-title">Icon System</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 12 24 L 24 12 L 36 24" stroke="#CCFF00" stroke-width="2" fill="none"/>
+                        <line x1="24" y1="12" x2="24" y2="36" stroke="#CCFF00" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Boost</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="12" fill="none" stroke="#CCFF00" stroke-width="2"/>
+                        <path d="M 24 16 L 24 24 L 30 27" stroke="#CCFF00" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Speed</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 24 12 L 18 24 L 24 24 L 24 36 L 30 24 L 24 24 Z" fill="#CCFF00"/>
+                    </svg>
+                    <div class="icon-label">Power</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="3" fill="#CCFF00"/>
+                        <circle cx="24" cy="24" r="8" fill="none" stroke="#CCFF00" stroke-width="2"/>
+                        <circle cx="24" cy="24" r="13" fill="none" stroke="#CCFF00" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Analyze</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

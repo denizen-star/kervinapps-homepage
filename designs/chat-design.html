@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat (Common Grounds) - Design Specification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
+            background: #0F1419;
+            color: #E2E8F0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            border-bottom: 2px solid #38BDF8;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #38BDF8;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            font-size: 1rem;
+            color: #64748B;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #38BDF8;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .color-swatch {
+            height: 120px;
+        }
+
+        .color-info {
+            padding: 15px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+
+        .color-hex {
+            font-size: 0.9rem;
+            color: #64748B;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .color-usage {
+            font-size: 0.85rem;
+            color: #64748B;
+            margin-top: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .logo-showcase {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .logo svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ui-preview {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .btn-primary {
+            background: #38BDF8;
+            color: #0F1419;
+        }
+
+        .btn-primary:hover {
+            background: #0EA5E9;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #38BDF8;
+            border: 2px solid #38BDF8;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .btn-danger {
+            background: #EF4444;
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            background: #DC2626;
+        }
+
+        .typography-sample {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 30px;
+        }
+
+        .type-heading-1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .type-heading-2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #E2E8F0;
+            margin-bottom: 10px;
+        }
+
+        .type-body {
+            font-size: 1rem;
+            color: #64748B;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .type-code {
+            font-size: 0.95rem;
+            color: #38BDF8;
+            font-family: 'SF Mono', monospace;
+            background: #0F1419;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+        }
+
+        .icon-item svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon-label {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+
+        .design-principles {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 30px;
+        }
+
+        .principle {
+            margin-bottom: 25px;
+        }
+
+        .principle-title {
+            color: #38BDF8;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .principle-desc {
+            color: #64748B;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .chat-demo {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .message-sender {
+            color: #38BDF8;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .message-content {
+            color: #E2E8F0;
+            background: #0F1419;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #38BDF8;
+        }
+
+        .message-time {
+            color: #64748B;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Chat</h1>
+            <p class="tagline">Design System Specification v1.0 - Common Grounds Messaging</p>
+        </div>
+
+        <!-- Design Principles -->
+        <div class="section">
+            <h2 class="section-title">Design Principles</h2>
+            <div class="design-principles">
+                <div class="principle">
+                    <div class="principle-title">1. Slack's Professional Communication</div>
+                    <div class="principle-desc">Common Grounds provides real-time messaging with professional user management. Sky blue accent creates trust and clarity. No "Unknown User" errors - every participant has a real name and profile.</div>
+                </div>
+                <div class="principle">
+                    <div class="principle-title">2. Discord's Smooth Experience</div>
+                    <div class="principle-desc">Optimized polling intervals prevent UI flashing. Messages sync smoothly with Google Sheets backend. Clean conversation deduplication and scalable architecture support 100+ concurrent users without degradation.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="section">
+            <h2 class="section-title">Logo</h2>
+            <div class="logo-showcase">
+                <div class="logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Chat bubble -->
+                        <rect x="40" y="60" width="100" height="70" rx="12" fill="none" stroke="#38BDF8" stroke-width="4"/>
+                        <path d="M 70 130 L 70 150 L 90 130" fill="none" stroke="#38BDF8" stroke-width="4"/>
+                        <!-- Message lines -->
+                        <line x1="55" y1="80" x2="125" y2="80" stroke="#38BDF8" stroke-width="3"/>
+                        <line x1="55" y1="95" x2="110" y2="95" stroke="#38BDF8" stroke-width="3"/>
+                        <line x1="55" y1="110" x2="120" y2="110" stroke="#38BDF8" stroke-width="3"/>
+                        <!-- User indicator -->
+                        <circle cx="150" cy="50" r="15" fill="none" stroke="#38BDF8" stroke-width="3"/>
+                        <circle cx="150" cy="50" r="5" fill="#38BDF8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #0F1419;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Navy</div>
+                        <div class="color-hex">#0F1419</div>
+                        <div class="color-usage">Primary background</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1E293B;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Dark Slate</div>
+                        <div class="color-hex">#1E293B</div>
+                        <div class="color-usage">Message containers, panels</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #334155;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Border Grey</div>
+                        <div class="color-hex">#334155</div>
+                        <div class="color-usage">Borders, dividers</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #38BDF8;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Sky Blue</div>
+                        <div class="color-hex">#38BDF8</div>
+                        <div class="color-usage">Links, names, active states</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #E2E8F0;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary Text</div>
+                        <div class="color-hex">#E2E8F0</div>
+                        <div class="color-usage">Message content</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #64748B;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary Text</div>
+                        <div class="color-hex">#64748B</div>
+                        <div class="color-usage">Timestamps, metadata</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #22C55E;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Online Green</div>
+                        <div class="color-hex">#22C55E</div>
+                        <div class="color-usage">Online status</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #EF4444;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Error Red</div>
+                        <div class="color-hex">#EF4444</div>
+                        <div class="color-usage">Errors, disconnected</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-sample">
+                <div class="type-heading-1">Common Grounds</div>
+                <p style="color: #64748B; margin-bottom: 20px;">SF Mono, 700 weight, 2.5rem</p>
+                
+                <div class="type-heading-2">Active Conversations</div>
+                <p style="color: #64748B; margin-bottom: 20px;">SF Mono, 600 weight, 2rem</p>
+                
+                <p class="type-body">Professional real-time messaging with clean user management. Typography emphasizes readability for extended conversations with smooth, non-flashing updates.</p>
+                <p style="color: #64748B; margin-bottom: 20px;">System UI, 400 weight, 1rem</p>
+                
+                <p><span class="type-code">REAL_TIME_SYNC</span></p>
+                <p style="color: #64748B;">SF Mono, 400 weight, 0.95rem</p>
+            </div>
+        </div>
+
+        <!-- UI Components -->
+        <div class="section">
+            <h2 class="section-title">UI Components</h2>
+            <div class="ui-preview">
+                <h3 style="color: #E2E8F0; margin-bottom: 15px;">Action Buttons</h3>
+                <div class="button-group">
+                    <button class="btn btn-primary">Send Message</button>
+                    <button class="btn btn-secondary">New Conversation</button>
+                    <button class="btn btn-danger">Leave Chat</button>
+                </div>
+
+                <div class="chat-demo">
+                    <div class="message">
+                        <div class="message-sender">Kervin Leacock</div>
+                        <div class="message-content">
+                            Common Grounds provides professional messaging with real user management - no more "Unknown User" errors!
+                        </div>
+                        <div class="message-time">2:45 PM</div>
+                    </div>
+                    <div class="message">
+                        <div class="message-sender">Team Member</div>
+                        <div class="message-content">
+                            The smooth real-time updates make conversations feel natural and professional.
+                        </div>
+                        <div class="message-time">2:47 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icons -->
+        <div class="section">
+            <h2 class="section-title">Icon System</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="12" y="16" width="24" height="18" rx="3" fill="none" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M 18 34 L 18 40 L 24 34" fill="none" stroke="#38BDF8" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Message</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="18" r="6" fill="none" stroke="#38BDF8" stroke-width="2"/>
+                        <path d="M 14 34 Q 14 28 24 28 Q 34 28 34 34" stroke="#38BDF8" stroke-width="2" fill="none"/>
+                    </svg>
+                    <div class="icon-label">User</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="12" fill="none" stroke="#38BDF8" stroke-width="2"/>
+                        <circle cx="24" cy="24" r="5" fill="#38BDF8"/>
+                    </svg>
+                    <div class="icon-label">Online</div>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="12" y="16" width="24" height="16" rx="2" fill="none" stroke="#38BDF8" stroke-width="2"/>
+                        <line x1="16" y1="22" x2="32" y2="22" stroke="#38BDF8" stroke-width="2"/>
+                        <line x1="16" y1="26" x2="28" y2="26" stroke="#38BDF8" stroke-width="2"/>
+                    </svg>
+                    <div class="icon-label">Conversation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
