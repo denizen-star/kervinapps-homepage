@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KervinApps - Application Documentation Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1d23 0%, #2d3142 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #a1a1aa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #06b6d4, #10b981);
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(79, 70, 229, 0.5);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .app-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .app-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .app-description {
+            color: #a1a1aa;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+
+        .links-section {
+            margin-top: 20px;
+        }
+
+        .links-section h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .link-item {
+            display: block;
+            padding: 12px 16px;
+            background: rgba(79, 70, 229, 0.2);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .link-item:hover {
+            background: rgba(79, 70, 229, 0.4);
+            border-color: rgba(79, 70, 229, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .link-item.markdown {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .link-item.markdown:hover {
+            background: rgba(6, 182, 212, 0.4);
+            border-color: rgba(6, 182, 212, 0.6);
+        }
+
+        .link-item.html {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .link-item.html:hover {
+            background: rgba(16, 185, 129, 0.4);
+            border-color: rgba(16, 185, 129, 0.6);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-live {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-development {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-planned {
+            background: rgba(107, 114, 128, 0.2);
+            color: #6b7280;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #6b7280;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Animated background shapes */
+        .shape {
+            position: fixed;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.1));
+            animation: float 20s infinite ease-in-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(15px) rotate(240deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background shapes -->
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>KervinApps Documentation</h1>
+            <p>Professional tools for modern life - Complete documentation and friendly explanations for all applications</p>
+        </div>
+
+        <div class="apps-grid">
+            <!-- Hunter Application -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">🎯</div>
+                    <div class="app-title">Hunter</div>
+                </div>
+                <div class="status-badge status-live">Live</div>
+                <div class="app-description">
+                    AI-powered job application management system that uses local AI to match your resume with job descriptions, generate customized cover letters and resumes, and track your applications.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="hunter.html" class="link-item html">What is Hunter? (HTML)</a>
+                        <a href="../designs/hunter-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../job-hunting.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Application -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">💬</div>
+                    <div class="app-title">Common Grounds</div>
+                </div>
+                <div class="status-badge status-live">Live</div>
+                <div class="app-description">
+                    Modern, real-time chat application that brings people together through conversation. Built with professional software engineering principles, it provides a scalable, maintainable solution for group and one-on-one messaging.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="chat.html" class="link-item html">What is Chat? (HTML)</a>
+                        <a href="../designs/chat-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../chat.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kblog Application -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">📝</div>
+                    <div class="app-title">Kblog</div>
+                </div>
+                <div class="status-badge status-live">Live</div>
+                <div class="app-description">
+                    Professional blog platform focused on data architecture, information asymmetry, and enterprise data strategies. Features environment-aware configuration and responsive design.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="kblog.html" class="link-item html">What is Kblog? (HTML)</a>
+                        <a href="../designs/kblog-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../kblog.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KervinApps Homepage -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">🏠</div>
+                    <div class="app-title">KervinApps Homepage</div>
+                </div>
+                <div class="status-badge status-live">Live</div>
+                <div class="app-description">
+                    Sophisticated homepage featuring 7 professional applications across 4 categories. Built with Dark Nordic Fusion design and glassmorphic effects for a premium, professional presentation.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="../index.html" class="link-item html">View Portfolio</a>
+                        <a href="../app-icons.html" class="link-item html">App Icons</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CBA Application -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">🤝</div>
+                    <div class="app-title">CBA - Community Builder</div>
+                </div>
+                <div class="status-badge status-development">Development</div>
+                <div class="app-description">
+                    AI-powered, hyper-local networking platform that creates meaningful in-person connections within professional hubs. Features smart matching, micro-events, and coffee chat scheduling.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="community-builder.html" class="link-item html">What is CBA? (HTML)</a>
+                        <a href="../designs/community-builder-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../community-builder.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Planner -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">💰</div>
+                    <div class="app-title">Financial Planner</div>
+                </div>
+                <div class="status-badge status-planned">Planned</div>
+                <div class="app-description">
+                    Simple, privacy-first financial planning tool focused on budgeting, goal tracking, and building better financial habits. No bank connections, just clean, actionable financial planning.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="financial-planner.html" class="link-item html">What is Financial Planner? (HTML)</a>
+                        <a href="../designs/financial-planner-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../financial-planner.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimizer -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">⚡</div>
+                    <div class="app-title">Optimizer</div>
+                </div>
+                <div class="status-badge status-development">Development</div>
+                <div class="app-description">
+                    Calendar-first habit building assistant that integrates with your real schedule. Features smart placement, gradual progression, and automated weekly reviews for sustainable habit change.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="optimizer.html" class="link-item html">What is Optimizer? (HTML)</a>
+                        <a href="../designs/optimizer-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../optimizer.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gay Run Club -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">🏃‍♂️</div>
+                    <div class="app-title">Gay Run Club</div>
+                </div>
+                <div class="status-badge status-planned">Validation</div>
+                <div class="app-description">
+                    Safe, inclusive running community platform for the LGBTQ+ community. Features group coordination, safety-first design, and community-focused networking for local runners.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="gay-run-club.html" class="link-item html">What is Gay Run Club? (HTML)</a>
+                        <a href="../designs/gay-run-club-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../scheduling-gay-run-club.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toronto Guide -->
+            <div class="app-card">
+                <div class="app-header">
+                    <div class="app-icon">🍁</div>
+                    <div class="app-title">Toronto Guide</div>
+                </div>
+                <div class="status-badge status-development">Development</div>
+                <div class="app-description">
+                    Curated, Swiss-designed concierge for Toronto's best experiences. Features systematic curation, advanced filtering, and premium experience focus for discerning adults.
+                </div>
+                <div class="links-section">
+                    <h4>Documentation Links</h4>
+                    <div class="links-grid">
+                        <a href="toronto-guide.html" class="link-item html">What is Toronto Guide? (HTML)</a>
+                        <a href="../designs/toronto-guide-design.html" class="link-item html">Design Mockup</a>
+                        <a href="../toronto-guide.html" class="link-item html">Portfolio Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>KervinApps Documentation Index</strong></p>
+            <p>Complete documentation for all professional applications</p>
+            <p>Built with ❤️ by <a href="https://kervinapps.com">Kervin Leacock</a></p>
+            <p>Last updated: January 2025</p>
+        </div>
+    </div>
+</body>
+</html>
