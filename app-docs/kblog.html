@@ -5,105 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What is Kblog? - A Friendly Explanation</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        h1 {
-            color: #2d3748;
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-            text-align: center;
-        }
-        h2 {
-            color: #4a5568;
-            font-size: 1.8em;
-            margin-top: 2em;
-            margin-bottom: 1em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5em;
-        }
-        h3 {
-            color: #2d3748;
-            font-size: 1.4em;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
-        }
-        p {
-            margin-bottom: 1.2em;
-            font-size: 1.1em;
-        }
-        ul, ol {
-            margin-bottom: 1.2em;
-            padding-left: 1.5em;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 5px solid #667eea;
-        }
-        .feature-box {
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-        .emoji {
-            font-size: 1.2em;
-        }
-        .tech-details {
-            background: #2d3748;
-            color: #e2e8f0;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        .tech-details h3 {
-            color: #a8edea;
-        }
-        .tech-details ul {
-            color: #e2e8f0;
-        }
-        .bottom-line {
-            background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 30px 0;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .conclusion {
-            text-align: center;
-            font-size: 1.3em;
-            color: #667eea;
-            margin-top: 30px;
-            font-weight: bold;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1d23;
+    color: #e4e6eb;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.abstract-shape {
+    position: fixed;
+    opacity: 0.15;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.abstract-shape.circle {
+    border-radius: 50%;
+}
+
+.shape-1 {
+    width: 500px;
+    height: 500px;
+    background: #6b7a8f;
+    top: -250px;
+    left: -250px;
+    animation: float-slow 25s ease-in-out infinite;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: #7a8a9f;
+    top: 400px;
+    right: -200px;
+    animation: float-slow 30s ease-in-out infinite 5s;
+}
+
+.shape-3 {
+    width: 350px;
+    height: 350px;
+    background: #5a6a7f;
+    bottom: -175px;
+    left: 150px;
+    animation: float-slow 35s ease-in-out infinite 10s;
+}
+
+@keyframes float-slow {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    33% { 
+        transform: translateY(-15px) rotate(5deg) scale(1.02);
+    }
+    66% { 
+        transform: translateY(10px) rotate(-3deg) scale(0.98);
+    }
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    color: #8b92a3;
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.dark-nordic-card {
+    background: rgba(36, 41, 49, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    color: #d1d5db;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+ul, ol {
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.6rem;
+}
+
+strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.highlight {
+    background: rgba(74, 85, 104, 0.3);
+    border-left: 4px solid #6b7a8f;
+    padding: 20px 25px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.feature-box {
+    background: rgba(42, 47, 58, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.tech-details {
+    background: rgba(26, 29, 35, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+.tech-details h3 {
+    color: #8b92a3;
+    margin-top: 0;
+}
+
+.tech-details ul {
+    color: #d1d5db;
+}
+
+.bottom-line {
+    background: rgba(74, 85, 104, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 1.1rem;
+}
+
+.conclusion {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #8b92a3;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 20px 15px;
+    }
+    
+    .dark-nordic-card {
+        padding: 25px 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    p, ul, ol {
+        font-size: 1rem;
+    }
+}
+
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Background Shapes -->
+    <div class="abstract-shape shape-1 circle"></div>
+    <div class="abstract-shape shape-2 circle"></div>
+    <div class="abstract-shape shape-3 circle"></div>
+    
+    <div class="content-wrapper">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Back to Portfolio</a>
+            
+            <div class="dark-nordic-card">
+
         <h1> What is Kblog? A Friendly Explanation</h1>
         
         <p>Hey friend! Let me tell you about this awesome blog platform I built. It's called <strong>Kblog</strong>, and it's been a game-changer for sharing my thoughts on data architecture and enterprise data strategies.</p>
@@ -316,6 +455,9 @@
         <div class="conclusion">
             <strong>That's Kblog in a nutshell!</strong> <br><br>
             Questions? Want to see some articles? Just let me know!
+        </div>
+    
+            </div>
         </div>
     </div>
 </body>
