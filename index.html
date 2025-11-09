@@ -176,40 +176,6 @@
             transform: translateY(-2px);
         }
         
-        .tab-button {
-            background: rgba(42, 47, 58, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #8b92a3;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .tab-button:hover {
-            background: rgba(42, 47, 58, 0.6);
-            color: #c7cad1;
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-        
-        .tab-button.active {
-            background: rgba(74, 85, 104, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 16px rgba(74, 85, 104, 0.3);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
         
         .nordic-button {
             background: #3a4556;
@@ -380,48 +346,33 @@
 
             <div class="divider mb-10"></div>
 
-            <!-- Category Tabs -->
+            <!-- All Apps -->
             <div class="dark-nordic-card p-8 mb-8">
-                <div class="flex gap-3 mb-10 flex-wrap">
-                    <button onclick="showTab('networking')" class="tab-button active px-5 py-3 text-sm">
-                        # networking
-                    </button>
-                    <button onclick="showTab('lifestyle')" class="tab-button px-5 py-3 text-sm">
-                        # lifestyle
-                    </button>
-                    <button onclick="showTab('productivity')" class="tab-button px-5 py-3 text-sm">
-                        # productivity
-                    </button>
-                    <button onclick="showTab('planning')" class="tab-button px-5 py-3 text-sm">
-                        # planning
-                    </button>
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-semibold text-white mb-3">All Applications</h2>
+                    <p class="text-base text-gray-400 max-w-2xl mx-auto">
+                        Professional tools for modern life
+                    </p>
                 </div>
-
-                <!-- Networking Category -->
-                <div id="networking" class="tab-content active">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl font-semibold text-white mb-3">Networking & Connections</h2>
-                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
-                            Platforms that help you build meaningful professional relationships
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Pathfinders -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
                                     <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">PF</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Pathfinders
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-live px-3 py-1.5 text-xs">
-                                                Live
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Pathfinders
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-live px-3 py-1.5 text-xs">
+                                                    Live
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -429,18 +380,6 @@
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                                         Professional networking data collection platform designed to facilitate meaningful connections through intelligent demographic matching.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">Next.js 14</span>
-                                            <span class="tech-badge px-3 py-1.5">React 18</span>
-                                            <span class="tech-badge px-3 py-1.5">Tailwind CSS</span>
-                                            <span class="tech-badge px-3 py-1.5">Google Sheets API</span>
-                                            <span class="tech-badge px-3 py-1.5">Netlify</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
                                     <a href="app-docs/index.html#pathfinders" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
@@ -458,50 +397,45 @@
                             </div>
                         </div>
 
-                        <!-- Community Builder -->
+                        <!-- Kblog -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
-                                    <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">CB</div>
+                                    <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">KB</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Community Builder App
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-dev px-3 py-1.5 text-xs">
-                                                In Development
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Kblog
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    JavaScript
+                                                </span>
+                                                <span class="badge-live px-3 py-1.5 text-xs">
+                                                    Live
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="app-card-description">
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
-                                        AI-powered, hyper-local networking that creates meaningful in-person connections within professional hubs.
+                                        Professional blog platform focused on data architecture and enterprise data strategies with environment-aware configuration and responsive design.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">React</span>
-                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
-                                            <span class="tech-badge px-3 py-1.5">AI/ML</span>
-                                            <span class="tech-badge px-3 py-1.5">Real-time Events</span>
-                                            <span class="tech-badge px-3 py-1.5">Mobile-First</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
-                                    <a href="app-docs/community-builder.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-                                        What is Community Builder? →
+                                    <a href="app-docs/kblog.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                                        What is Kblog? →
                                     </a>
                                 </div>
-                                <a href="community-builder.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
-                                    Learn More
-                                </a>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="https://kblog.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
+                                        Try Kblog
+                                    </a>
+                                    <a href="kblog.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
+                                        Learn More
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -511,16 +445,18 @@
                                 <div class="flex items-start gap-4 mb-4">
                                     <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">CG</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Chat (Common Grounds)
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-live px-3 py-1.5 text-xs">
-                                                Live
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Chat (Common Grounds)
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-live px-3 py-1.5 text-xs">
+                                                    Live
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -528,18 +464,6 @@
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                                         Modern real-time chat application with professional data architecture, JWT authentication, and Google Sheets backend supporting 100+ concurrent users.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">Next.js 14</span>
-                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
-                                            <span class="tech-badge px-3 py-1.5">Tailwind CSS</span>
-                                            <span class="tech-badge px-3 py-1.5">Google Sheets API</span>
-                                            <span class="tech-badge px-3 py-1.5">SQLite</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
                                     <a href="app-docs/chat.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
@@ -556,34 +480,24 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Lifestyle Category -->
-                <div id="lifestyle" class="tab-content">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl font-semibold text-white mb-3">Lifestyle & Discovery</h2>
-                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
-                            Apps that enhance your daily experiences and help you discover new opportunities
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Toronto Guide -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
                                     <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">TG</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Toronto Guide
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                Python
-                                            </span>
-                                            <span class="badge-live px-3 py-1.5 text-xs">
-                                                Live
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Toronto Guide
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    Python
+                                                </span>
+                                                <span class="badge-live px-3 py-1.5 text-xs">
+                                                    Live
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -591,17 +505,6 @@
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                                         Curated, Swiss-designed concierge for Toronto's best experiences with systematic curation and clean UX.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">Python</span>
-                                            <span class="tech-badge px-3 py-1.5">Static Site</span>
-                                            <span class="tech-badge px-3 py-1.5">CSV Data</span>
-                                            <span class="tech-badge px-3 py-1.5">Netlify</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
                                     <a href="app-docs/toronto-guide.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
@@ -619,80 +522,65 @@
                             </div>
                         </div>
 
-                        <!-- Scheduling Gay Run Club -->
+                        <!-- Hunter -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
-                                    <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">RC</div>
+                                    <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">HT</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Scheduling Gay Run Club
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-planned px-3 py-1.5 text-xs">
-                                                Planned
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Hunter
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    Python
+                                                </span>
+                                                <span class="badge-live px-3 py-1.5 text-xs">
+                                                    Live
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="app-card-description">
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
-                                        Community event management platform designed to coordinate and manage running club events for the LGBTQ+ community.
+                                        AI-powered job search assistant that analyzes job descriptions, generates customized resumes and cover letters, and provides intelligent match scoring using local AI.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">React</span>
-                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
-                                            <span class="tech-badge px-3 py-1.5">Event Management</span>
-                                            <span class="tech-badge px-3 py-1.5">Community Features</span>
-                                            <span class="tech-badge px-3 py-1.5">Safety Tools</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
-                                    <a href="app-docs/gay-run-club.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-                                        What is Gay Run Club? →
+                                    <a href="app-docs/hunter.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                                        What is Hunter? →
                                     </a>
                                 </div>
-                                <a href="scheduling-gay-run-club.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
-                                    Learn More
-                                </a>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="https://hunter.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
+                                        Try Hunter
+                                    </a>
+                                    <a href="job-hunting.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
+                                        Learn More
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Productivity Category -->
-                <div id="productivity" class="tab-content">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl font-semibold text-white mb-3">Productivity Tools</h2>
-                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
-                            Apps designed to enhance your efficiency and help you accomplish more
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Optimizer -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
                                     <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">OP</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Optimizer
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-dev px-3 py-1.5 text-xs">
-                                                In Development
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Optimizer
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-dev px-3 py-1.5 text-xs">
+                                                    In Development
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -700,19 +588,6 @@
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                                         Calendar-first habit assistant that schedules minimum-viable actions into real, available time with evidence-based reviews.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">React</span>
-                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
-                                            <span class="tech-badge px-3 py-1.5">MUI</span>
-                                            <span class="tech-badge px-3 py-1.5">Node.js/Express</span>
-                                            <span class="tech-badge px-3 py-1.5">PostgreSQL</span>
-                                            <span class="tech-badge px-3 py-1.5">Google Calendar API</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
                                     <a href="app-docs/optimizer.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
@@ -730,135 +605,97 @@
                             </div>
                         </div>
 
-                        <!-- Hunter -->
+                        <!-- Scheduling Gay Run Club -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
-                                    <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">HT</div>
+                                    <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">RC</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Hunter
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                Python
-                                            </span>
-                                            <span class="badge-live px-3 py-1.5 text-xs">
-                                                Live
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Scheduling Gay Run Club
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-planned px-3 py-1.5 text-xs">
+                                                    Planned
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="app-card-description">
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
-                                        AI-powered job search assistant that analyzes job descriptions, generates customized resumes and cover letters, and provides intelligent match scoring using local AI.
+                                        Community event management platform designed to coordinate and manage running club events for the LGBTQ+ community.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">Python 3.11+</span>
-                                            <span class="tech-badge px-3 py-1.5">Flask</span>
-                                            <span class="tech-badge px-3 py-1.5">Ollama (Local AI)</span>
-                                            <span class="tech-badge px-3 py-1.5">YAML/Markdown</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
-                                    <a href="app-docs/hunter.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-                                        What is Hunter? →
+                                    <a href="app-docs/gay-run-club.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                                        What is Gay Run Club? →
                                     </a>
                                 </div>
-                                <div class="flex gap-3 mt-auto">
-                                    <a href="https://hunter.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
-                                        Try Hunter
-                                    </a>
-                                    <a href="job-hunting.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
-                                        Learn More
-                                    </a>
-                                </div>
+                                <a href="scheduling-gay-run-club.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
                             </div>
                         </div>
 
-                        <!-- Kblog -->
+                        <!-- Community Builder -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
-                                    <div class="server-icon text-sm" style="background: #2d7d5e; border-color: #3a9975;">KB</div>
+                                    <div class="server-icon text-sm" style="background: #8b7332; border-color: #a08842;">CB</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Kblog
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                JavaScript
-                                            </span>
-                                            <span class="badge-live px-3 py-1.5 text-xs">
-                                                Live
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Community Builder App
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-dev px-3 py-1.5 text-xs">
+                                                    In Development
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="app-card-description">
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
-                                        Professional blog platform focused on data architecture and enterprise data strategies with environment-aware configuration and responsive design.
+                                        AI-powered, hyper-local networking that creates meaningful in-person connections within professional hubs.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">HTML5/CSS3</span>
-                                            <span class="tech-badge px-3 py-1.5">JavaScript ES6+</span>
-                                            <span class="tech-badge px-3 py-1.5">JSON</span>
-                                            <span class="tech-badge px-3 py-1.5">Netlify</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
-                                    <a href="app-docs/kblog.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
-                                        What is Kblog? →
+                                    <a href="app-docs/community-builder.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
+                                        What is Community Builder? →
                                     </a>
                                 </div>
-                                <div class="flex gap-3 mt-auto">
-                                    <a href="https://kblog.kervinapps.com" target="_blank" class="nordic-button-primary px-4 py-2.5 text-sm flex-1 text-center">
-                                        Try Kblog
-                                    </a>
-                                    <a href="kblog.html" class="nordic-button px-4 py-2.5 text-sm flex-1 text-center">
-                                        Learn More
-                                    </a>
-                                </div>
+                                <a href="community-builder.html" class="nordic-button px-4 py-2.5 text-sm w-full text-center mt-auto">
+                                    Learn More
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Planning Category -->
-                <div id="planning" class="tab-content">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl font-semibold text-white mb-3">Financial Planning</h2>
-                        <p class="text-base text-gray-400 max-w-2xl mx-auto">
-                            Tools to help you manage your finances and plan for the future
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Financial Planner -->
                         <div class="dark-nordic-card p-6 app-card">
                             <div class="app-card-content">
                                 <div class="flex items-start gap-4 mb-4">
                                     <div class="server-icon text-sm" style="background: #4a5568; border-color: #5a6578;">FP</div>
                                     <div class="flex-1">
-                                        <h3 class="text-xl font-semibold text-white mb-3" style="letter-spacing: -0.01em;">
-                                            Financial Planner
-                                        </h3>
-                                        <div class="flex items-center gap-2 mb-4">
-                                            <span class="tech-badge px-3 py-1.5">
-                                                TypeScript
-                                            </span>
-                                            <span class="badge-planned px-3 py-1.5 text-xs">
-                                                Planned
-                                            </span>
+                                        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                                            <h3 class="text-xl font-semibold text-white" style="letter-spacing: -0.01em;">
+                                                Financial Planner
+                                            </h3>
+                                            <div class="flex items-center gap-2">
+                                                <span class="tech-badge px-3 py-1.5">
+                                                    TypeScript
+                                                </span>
+                                                <span class="badge-planned px-3 py-1.5 text-xs">
+                                                    Planned
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -866,17 +703,6 @@
                                     <p class="text-gray-300 mb-6 leading-relaxed text-sm">
                                         Plan, track, and optimize personal finances with clarity and ease using a lightweight, actionable system.
                                     </p>
-                                    <div class="mb-6">
-                                        <h4 class="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">
-                                            Technology Stack
-                                        </h4>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-badge px-3 py-1.5">React</span>
-                                            <span class="tech-badge px-3 py-1.5">TypeScript</span>
-                                            <span class="tech-badge px-3 py-1.5">Financial APIs</span>
-                                            <span class="tech-badge px-3 py-1.5">Data Visualization</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mt-3 mb-2">
                                     <a href="app-docs/financial-planner.html" class="text-sm text-gray-400 hover:text-gray-200 transition-colors duration-200">
@@ -888,7 +714,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
@@ -916,24 +741,5 @@
         </div>
     </div>
 
-    <script>
-        function showTab(category) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Remove active class from all tabs
-            const tabBtns = document.querySelectorAll('.tab-button');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(category).classList.add('active');
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-        }
-    </script>
 </body>
 </html>
