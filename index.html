@@ -449,6 +449,55 @@
             font-size: 12px;
         }
         
+        /* Desktop Menu Styles */
+        .desktop-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #242931;
+            border: 1px solid #3a3f4b;
+            border-radius: 12px;
+            padding: 8px;
+        }
+        
+        .desktop-menu-links {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .desktop-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            color: #e4e6eb;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+        
+        .desktop-menu-link:hover {
+            background: #2a2f3a;
+            color: #ffffff;
+        }
+        
+        .desktop-menu-link .server-icon {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            font-size: 11px;
+        }
+        
+        @media (min-width: 769px) {
+            .desktop-menu {
+                display: block;
+            }
+        }
+        
         @media (max-width: 768px) {
             .mobile-menu-button {
                 display: block;
@@ -485,10 +534,6 @@
                 <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">PF</div>
                 <span>Pathfinders</span>
             </a>
-            <a href="https://chat.kervinapps.com" target="_blank" class="mobile-menu-link">
-                <div class="server-icon" style="background: #4a5568; border-color: #5a6578;">CG</div>
-                <span>Chat (Common Grounds)</span>
-            </a>
             <a href="https://eplanner.kervinapps.com" target="_blank" class="mobile-menu-link">
                 <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">EP</div>
                 <span>Event Planner</span>
@@ -498,6 +543,32 @@
                 <span>Gay Run Club</span>
             </a>
             <a href="https://to-guide.kervinapps.com" target="_blank" class="mobile-menu-link">
+                <div class="server-icon" style="background: #4a5568; border-color: #5a6578;">TG</div>
+                <span>Toronto Guide</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Desktop Menu -->
+    <div class="desktop-menu">
+        <div class="desktop-menu-links">
+            <a href="https://kblog.kervinapps.com" target="_blank" class="desktop-menu-link">
+                <div class="server-icon" style="background: #8b7332; border-color: #a08842;">KB</div>
+                <span>Kblog</span>
+            </a>
+            <a href="https://pathfinders.kervinapps.com" target="_blank" class="desktop-menu-link">
+                <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">PF</div>
+                <span>Pathfinders</span>
+            </a>
+            <a href="https://eplanner.kervinapps.com" target="_blank" class="desktop-menu-link">
+                <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">EP</div>
+                <span>Event Planner</span>
+            </a>
+            <a href="https://gayrunclub.kervinapps.com" target="_blank" class="desktop-menu-link">
+                <div class="server-icon" style="background: #4a5568; border-color: #5a6578;">GR</div>
+                <span>Gay Run Club</span>
+            </a>
+            <a href="https://to-guide.kervinapps.com" target="_blank" class="desktop-menu-link">
                 <div class="server-icon" style="background: #4a5568; border-color: #5a6578;">TG</div>
                 <span>Toronto Guide</span>
             </a>
