@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner - Learn More | KervinApps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1d23;
+            color: #e4e6eb;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .abstract-shape {
+            position: fixed;
+            opacity: 0.15;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .abstract-shape.circle {
+            border-radius: 50%;
+        }
+        
+        .abstract-shape.semi-circle {
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #4a5568;
+            top: -250px;
+            left: -250px;
+            animation: float-slow 25s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 400px;
+            height: 200px;
+            background: #5a6578;
+            top: 400px;
+            right: -200px;
+            animation: float-slow 30s ease-in-out infinite 5s;
+        }
+        
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #3a4556;
+            bottom: -175px;
+            left: 150px;
+            animation: float-slow 35s ease-in-out infinite 10s;
+        }
+        
+        @keyframes float-slow {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-15px) rotate(5deg) scale(1.02);
+            }
+            66% { 
+                transform: translateY(10px) rotate(-3deg) scale(0.98);
+            }
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dark-nordic-card {
+            background: #242931;
+            border: 1px solid #3a3f4b;
+            border-radius: 16px;
+        }
+        
+        .badge-live {
+            background: #2d7d5e;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .tech-badge {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
+        .server-icon {
+            background: #4a5568;
+            border: 2px solid #5a6578;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            max-width: 60px;
+            min-height: 60px;
+            max-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 20px;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+        }
+        
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .app-header-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .app-header-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .app-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        .app-subtitle {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .app-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .server-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                max-width: 48px;
+                min-height: 48px;
+                max-height: 48px;
+                font-size: 18px;
+            }
+            
+            .app-title {
+                font-size: 1.5rem;
+            }
+            
+            .app-subtitle {
+                font-size: 1rem;
+            }
+            
+            .tech-badge {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+            
+            .badge-live {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .server-icon {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                max-width: 44px;
+                min-height: 44px;
+                max-height: 44px;
+                font-size: 16px;
+            }
+            
+            .app-title {
+                font-size: 1.25rem;
+            }
+            
+            .app-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="abstract-shape shape-1 circle"></div>
+    <div class="abstract-shape shape-2 semi-circle"></div>
+    <div class="abstract-shape shape-3 circle"></div>
+    
+    <div class="content-wrapper p-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="mb-8">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+                    ← Back to all apps
+                </a>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <div class="app-header">
+                    <div class="app-header-top">
+                        <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">EP</div>
+                        <div class="app-header-content">
+                            <h1 class="app-title">Event Planner</h1>
+                            <p class="app-subtitle">Professional event management and signup tracking</p>
+                        </div>
+                    </div>
+                    <div class="app-badges">
+                        <span class="tech-badge px-4 py-2">JavaScript</span>
+                        <span class="badge-live px-4 py-2 text-sm">Live</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-4">Overview</h2>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Event Planner is a comprehensive event management platform designed for professional event coordinators, organizers, and community leaders. The application streamlines the entire event lifecycle from planning and creation to participant registration, waiver collection, and post-event analytics.
+                </p>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Built on scalable serverless architecture with real-time data synchronization, Event Planner handles events of any size with robust capacity management, automated notifications, and detailed participant tracking. The platform emphasizes ease of use for both organizers and attendees while maintaining professional-grade security and data management.
+                </p>
+                <div class="mt-6">
+                    <a href="https://eplanner.kervinapps.com" target="_blank" class="inline-block bg-green-700 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium">
+                        Visit Event Planner →
+                    </a>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
+                <div class="space-y-5">
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Professional Event Creation</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Create detailed events with comprehensive information including venue details, date/time scheduling, capacity limits, and custom descriptions. Support for recurring events and multi-session workshops.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Smart Registration System</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Intelligent signup system with real-time availability checking, automatic capacity management, and instant confirmation emails. Prevents double-booking and manages waitlists automatically.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Digital Waiver & Consent Management</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Comprehensive waiver system with customizable legal agreements, digital signature capture, timestamp verification, and secure storage. Full audit trail for compliance and liability protection.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Attendee Management Dashboard</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Powerful admin interface for viewing all registrants, tracking attendance, managing check-ins, and exporting participant data for further analysis or communication.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Location & Mapping Integration</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Interactive Mapbox integration displays event locations with pin-point accuracy, directions, and nearby landmarks. Helps attendees plan travel and find venues easily.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Multi-Event Organization</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Manage multiple simultaneous events with separate registration flows, independent capacity limits, and individual analytics. Perfect for organizations running regular programming.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Real-Time Analytics & Reporting</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Track registration trends, monitor capacity utilization, analyze attendee demographics, and generate comprehensive reports for stakeholders and funders.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Shareable Event Links</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Generate unique, shareable URLs for each event that can be distributed via email, social media, or embedded in websites. Each link provides full event details and registration capabilities.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Mobile-Optimized Experience</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Fully responsive design ensures seamless experience across all devices. Attendees can register and coordinators can manage events from smartphones, tablets, or desktops.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Secure Data Storage</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Enterprise-grade PlanetScale database ensures participant information is stored securely with encryption, regular backups, and compliance with data protection regulations.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">RESTful API Architecture</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Clean, well-documented API endpoints enable integration with external systems, custom reporting tools, and future mobile applications. Built for extensibility and scalability.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Device & Session Tracking</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Advanced telemetry captures device information, browser details, and session data to help organizers understand how participants interact with the platform and optimize the experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Technology Stack</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <div class="tech-badge px-4 py-3 text-center">JavaScript (ES6+)</div>
+                    <div class="tech-badge px-4 py-3 text-center">Node.js</div>
+                    <div class="tech-badge px-4 py-3 text-center">Express.js</div>
+                    <div class="tech-badge px-4 py-3 text-center">PlanetScale (MySQL)</div>
+                    <div class="tech-badge px-4 py-3 text-center">Netlify Functions</div>
+                    <div class="tech-badge px-4 py-3 text-center">Mapbox GL JS</div>
+                    <div class="tech-badge px-4 py-3 text-center">RESTful API</div>
+                    <div class="tech-badge px-4 py-3 text-center">Serverless Architecture</div>
+                    <div class="tech-badge px-4 py-3 text-center">Responsive CSS</div>
+                    <div class="tech-badge px-4 py-3 text-center">Digital Signature</div>
+                    <div class="tech-badge px-4 py-3 text-center">Real-Time Data Sync</div>
+                    <div class="tech-badge px-4 py-3 text-center">JSON Storage</div>
+                </div>
+            </div>
+            
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Use Cases</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">For Event Coordinators</h3>
+                        <ul class="text-gray-300 text-sm space-y-2 ml-5 list-disc">
+                            <li>Create and manage corporate conferences, training sessions, and workshops</li>
+                            <li>Organize community events with precise capacity control</li>
+                            <li>Coordinate multiple events simultaneously with separate registration flows</li>
+                            <li>Track attendance and generate reports for stakeholders</li>
+                            <li>Collect legally binding waivers and maintain compliance records</li>
+                            <li>Export attendee lists for follow-up communications and marketing</li>
+                            <li>Monitor real-time registration trends and adjust capacity as needed</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">For Attendees</h3>
+                        <ul class="text-gray-300 text-sm space-y-2 ml-5 list-disc">
+                            <li>Browse upcoming events with full details and location maps</li>
+                            <li>Register quickly with minimal friction through streamlined forms</li>
+                            <li>Sign digital waivers securely within the platform</li>
+                            <li>Receive instant confirmation and event details</li>
+                            <li>Access event information on any device with mobile-optimized interface</li>
+                            <li>View interactive maps to plan travel to event venues</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">For Organizations</h3>
+                        <ul class="text-gray-300 text-sm space-y-2 ml-5 list-disc">
+                            <li>Manage regular programming with recurring event creation</li>
+                            <li>Maintain compliance with liability waivers and participant records</li>
+                            <li>Analyze attendance patterns to optimize future event planning</li>
+                            <li>Scale event management from small meetups to large conferences</li>
+                            <li>Integrate with existing workflows through REST API</li>
+                            <li>Reduce administrative overhead with automated processes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Target Users</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <h3 class="text-lg font-medium text-white mb-2">Professional Event Planners</h3>
+                        <p class="text-gray-300 text-sm">Managing corporate events, conferences, and professional development workshops requiring detailed attendee tracking and compliance.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <h3 class="text-lg font-medium text-white mb-2">Community Organizations</h3>
+                        <p class="text-gray-300 text-sm">Non-profits, clubs, and associations coordinating regular community programming and member engagement activities.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <h3 class="text-lg font-medium text-white mb-2">Educational Institutions</h3>
+                        <p class="text-gray-300 text-sm">Schools, universities, and training centers organizing lectures, seminars, open houses, and student activities.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg">
+                        <h3 class="text-lg font-medium text-white mb-2">Corporate Training Departments</h3>
+                        <p class="text-gray-300 text-sm">HR teams and training coordinators managing employee workshops, onboarding sessions, and professional development programs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">API Documentation</h2>
+                <p class="text-gray-300 mb-4 text-sm">Event Planner provides a comprehensive RESTful API for programmatic access:</p>
+                <div class="space-y-3">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-green-400 text-sm">POST /api/runs/create</code>
+                        <p class="text-gray-300 text-sm mt-1">Create a new event with details and capacity limits</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-blue-400 text-sm">GET /api/runs</code>
+                        <p class="text-gray-300 text-sm mt-1">Retrieve all events with filtering options</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-blue-400 text-sm">GET /api/runs/:eventId</code>
+                        <p class="text-gray-300 text-sm mt-1">Get detailed information about a specific event</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-green-400 text-sm">POST /api/runs/:eventId/signup</code>
+                        <p class="text-gray-300 text-sm mt-1">Register an attendee for an event</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-blue-400 text-sm">GET /api/runs/:eventId/signups</code>
+                        <p class="text-gray-300 text-sm mt-1">Retrieve all signups for a specific event</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-yellow-400 text-sm">PUT /api/runs/:eventId</code>
+                        <p class="text-gray-300 text-sm mt-1">Update event details and settings</p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <code class="text-red-400 text-sm">DELETE /api/runs/:eventId</code>
+                        <p class="text-gray-300 text-sm mt-1">Remove an event and associated data</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

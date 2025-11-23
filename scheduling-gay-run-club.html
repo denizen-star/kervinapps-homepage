@@ -98,6 +98,13 @@
             border-radius: 6px;
         }
         
+        .badge-live {
+            background: #2d7d5e;
+            color: #ffffff;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        
         .server-icon {
             background: #4a5568;
             border: 2px solid #5a6578;
@@ -225,15 +232,15 @@
             <div class="dark-nordic-card p-8 mb-8">
                 <div class="app-header">
                     <div class="app-header-top">
-                        <div class="server-icon">RC</div>
+                        <div class="server-icon" style="background: #2d7d5e; border-color: #3a9975;">RC</div>
                         <div class="app-header-content">
-                            <h1 class="app-title">Scheduling Gay Run Club</h1>
+                            <h1 class="app-title">Gay Run Club</h1>
                             <p class="app-subtitle">Community event management for LGBTQ+ running club</p>
                         </div>
                     </div>
                     <div class="app-badges">
-                        <span class="tech-badge px-4 py-2">TypeScript</span>
-                        <span class="badge-planned px-4 py-2 text-sm">Planned</span>
+                        <span class="tech-badge px-4 py-2">JavaScript</span>
+                        <span class="badge-live px-4 py-2 text-sm">Live</span>
                     </div>
                 </div>
             </div>
@@ -241,31 +248,52 @@
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-4">Overview</h2>
                 <p class="text-gray-300 mb-4 leading-relaxed">
-                    Scheduling Gay Run Club is a community event management platform designed to coordinate and manage running club events for the LGBTQ+ community. The app provides tools for organizing runs, managing attendance, and building a supportive community.
+                    Gay Run Club is a live community event management platform designed to coordinate and manage running club events for the LGBTQ+ community. The application provides comprehensive tools for organizing runs, managing real-time signups, collecting waivers, and building a supportive community.
                 </p>
-                <p class="text-gray-300 leading-relaxed">
-                    With built-in safety features and inclusive design, the platform helps create a welcoming space for LGBTQ+ runners of all levels to connect, stay active, and build lasting friendships.
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    With built-in safety features, interactive mapping, and inclusive design, the platform helps create a welcoming space for LGBTQ+ runners of all levels to connect, stay active, and build lasting friendships.
                 </p>
+                <div class="mt-6">
+                    <a href="https://gayrunclub.kervinapps.com" target="_blank" class="inline-block bg-green-700 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium">
+                        Visit Gay Run Club →
+                    </a>
+                </div>
             </div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
-                <div class="space-y-4">
+                <div class="space-y-5">
                     <div>
-                        <h3 class="text-lg font-medium text-white mb-2">Event Scheduling</h3>
-                        <p class="text-gray-300 text-sm">Easy-to-use interface for organizing regular runs and special events</p>
+                        <h3 class="text-lg font-medium text-white mb-2">Run Coordination & Scheduling</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Create and coordinate runs with detailed location information, date/time selection, and participant capacity limits. Coordinators receive unique management links to oversee their events.</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-medium text-white mb-2">Community Building</h3>
-                        <p class="text-gray-300 text-sm">Foster connections among members with social features</p>
+                        <h3 class="text-lg font-medium text-white mb-2">Real-Time Signup System</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Participants can easily sign up for runs through shareable links, with automatic capacity tracking and instant confirmation. System prevents overbooking and provides real-time availability updates.</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-medium text-white mb-2">Safety Tools</h3>
-                        <p class="text-gray-300 text-sm">Built-in safety features for community protection</p>
+                        <h3 class="text-lg font-medium text-white mb-2">Digital Waiver Management</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Built-in digital waiver system with signature capture, automatic storage, and retrieval. Ensures all participants acknowledge safety guidelines before joining events.</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-medium text-white mb-2">Attendance Tracking</h3>
-                        <p class="text-gray-300 text-sm">Monitor participation and engagement metrics</p>
+                        <h3 class="text-lg font-medium text-white mb-2">Interactive Mapping</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Integrated Mapbox visualization displays run locations with interactive maps, making it easy for participants to find meeting points and plan their arrival.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Admin Dashboard</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Comprehensive CRUD interface for managing all runs, viewing signups, editing event details, and monitoring community engagement with full analytics.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">Mobile-Responsive Design</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Fully responsive interface optimized for mobile devices, ensuring seamless experience for coordinators and participants on any screen size.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">PlanetScale Database Backend</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Scalable MySQL-compatible database with serverless architecture, ensuring reliable data storage and fast query performance for growing community needs.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">RESTful API Architecture</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Clean API endpoints for run creation, retrieval, signup management, and data operations, enabling easy integration and future extensibility.</p>
                     </div>
                 </div>
             </div>
@@ -273,11 +301,41 @@
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Technology Stack</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    <div class="tech-badge px-4 py-3 text-center">React</div>
-                    <div class="tech-badge px-4 py-3 text-center">TypeScript</div>
-                    <div class="tech-badge px-4 py-3 text-center">Event Management</div>
-                    <div class="tech-badge px-4 py-3 text-center">Community Features</div>
-                    <div class="tech-badge px-4 py-3 text-center">Safety Tools</div>
+                    <div class="tech-badge px-4 py-3 text-center">JavaScript (ES6+)</div>
+                    <div class="tech-badge px-4 py-3 text-center">Node.js</div>
+                    <div class="tech-badge px-4 py-3 text-center">Express.js</div>
+                    <div class="tech-badge px-4 py-3 text-center">PlanetScale (MySQL)</div>
+                    <div class="tech-badge px-4 py-3 text-center">Netlify Functions</div>
+                    <div class="tech-badge px-4 py-3 text-center">Mapbox GL JS</div>
+                    <div class="tech-badge px-4 py-3 text-center">RESTful API</div>
+                    <div class="tech-badge px-4 py-3 text-center">Serverless Architecture</div>
+                    <div class="tech-badge px-4 py-3 text-center">Mobile-First CSS</div>
+                </div>
+            </div>
+            
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-6">Use Cases</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">For Coordinators</h3>
+                        <ul class="text-gray-300 text-sm space-y-2 ml-5 list-disc">
+                            <li>Create and schedule weekly runs with specific routes and meeting points</li>
+                            <li>Set participant limits to ensure manageable group sizes</li>
+                            <li>Track who has signed up and view all participant information</li>
+                            <li>Access digital waivers and maintain compliance records</li>
+                            <li>Manage multiple runs and view historical data</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-white mb-2">For Participants</h3>
+                        <ul class="text-gray-300 text-sm space-y-2 ml-5 list-disc">
+                            <li>Browse upcoming runs and view location details on interactive maps</li>
+                            <li>Sign up quickly with minimal information required</li>
+                            <li>Receive instant confirmation of registration</li>
+                            <li>Complete digital waivers securely within the platform</li>
+                            <li>Access run details and updates through shareable links</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
