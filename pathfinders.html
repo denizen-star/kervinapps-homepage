@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinders - Learn More | KervinApps</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#4a5568',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#6b7a8f',
+                lineColor: '#8b92a3',
+                secondaryColor: '#2d7d5e',
+                tertiaryColor: '#3a3f4b',
+                background: '#242931',
+                mainBkg: '#242931',
+                secondBkg: '#2a2f3a',
+                border1: '#6b7a8f',
+                border2: '#5a6a7f',
+                note: '#3a3f4b',
+                noteBkgColor: '#2a2f3a',
+                noteTextColor: '#d1d5db',
+                noteBorderColor: '#6b7a8f',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            }
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -308,6 +334,94 @@
                 font-size: 1rem;
             }
         }
+        
+        /* User Journey Styles */
+        .journey-container {
+            background: rgba(36, 41, 49, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .journey-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .journey-tab {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .journey-tab:hover {
+            background: #3a3f4b;
+            color: #d1d5db;
+            border-color: #4a5568;
+        }
+        
+        .journey-tab.active {
+            background: #4a5568;
+            color: #ffffff;
+            border-color: #6b7a8f;
+        }
+        
+        .journey-content {
+            display: none;
+        }
+        
+        .journey-content.active {
+            display: block;
+        }
+        
+        .journey-diagram {
+            background: rgba(26, 29, 35, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+            overflow-x: auto;
+        }
+        
+        .journey-diagram .mermaid {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .journey-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .journey-container {
+                padding: 20px;
+            }
+            
+            .journey-tab {
+                padding: 10px 16px;
+                font-size: 0.875rem;
+            }
+            
+            .journey-diagram {
+                padding: 16px;
+                overflow-x: scroll;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -367,6 +481,108 @@
                 </p>
             </div>
 
+            <!-- User Journey -->
+            <div class="journey-container">
+                <h2 class="text-2xl font-semibold text-white mb-6">User Journey</h2>
+                
+                <!-- Journey Tabs -->
+                <div class="journey-tabs">
+                    <button class="journey-tab active" onclick="showJourney('getting-started')">Getting Started</button>
+                    <button class="journey-tab" onclick="showJourney('daily-use')">Daily Use</button>
+                    <button class="journey-tab" onclick="showJourney('advanced-features')">Advanced Features</button>
+                </div>
+                
+                <!-- Journey 1: Getting Started -->
+                <div id="getting-started" class="journey-content active">
+                    <p class="journey-description">
+                        New users begin their Pathfinders experience by setting up their profile and learning how to collect professional contact information efficiently at networking events.
+                    </p>
+                    <div class="journey-diagram">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Visit Pathfinders] --> B{First Time User?}
+                                B -->|Yes| C[View Welcome Screen]
+                                B -->|No| D[Go to Dashboard]
+                                C --> E[Review Platform Overview]
+                                E --> F[Access Data Collection Form]
+                                F --> G{Choose Entry Method}
+                                G -->|Manual Entry| H[Fill Out Contact Form]
+                                G -->|Quick Scan| I[Use QR Code Scanner]
+                                H --> J[Enter Name & Email]
+                                J --> K[Add Professional Details]
+                                K --> L[Add Demographic Info]
+                                I --> L
+                                L --> M[Preview Entry]
+                                M --> N{Data Correct?}
+                                N -->|No| O[Edit Information]
+                                O --> M
+                                N -->|Yes| P[Submit to Google Sheets]
+                                P --> Q[Success Confirmation]
+                                Q --> R[Ready for Next Contact]
+                                
+                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style C fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style D fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                                style P fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style Q fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                                style R fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                                style B fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
+                                style G fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
+                                style N fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 2: Daily Use -->
+                <div id="daily-use" class="journey-content">
+                    <p class="journey-description">
+                        During networking events, users efficiently collect contact information with real-time synchronization to their data management system.
+                    </p>
+                    <div class="journey-diagram">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Arrive at Event] --> B[Open App]
+                                B --> C[Meet Contact]
+                                C --> D[Collect Info]
+                                D --> E[Save to Sheets]
+                                E --> F[Sync Complete]
+                                F --> G[End Session]
+                                
+                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style B fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style E fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                                style F fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style G fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 3: Advanced Features -->
+                <div id="advanced-features" class="journey-content">
+                    <p class="journey-description">
+                        Power users leverage demographic matching algorithms and data analytics to build meaningful professional relationships based on shared backgrounds and interests.
+                    </p>
+                    <div class="journey-diagram">
+                        <div class="mermaid">
+                            flowchart TD
+                                A[Access Dashboard] --> B[View Contacts]
+                                B --> C[Run Demographics]
+                                C --> D[View Matches]
+                                D --> E[Create Groups]
+                                E --> F[Export Data]
+                                F --> G[Schedule Followups]
+                                G --> H[Success]
+                                
+                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style C fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style E fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                                style F fill:#4a5568,stroke:#6b7a8f,color:#ffffff
+                                style H fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Key Features -->
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -402,6 +618,19 @@
                     <div class="tech-badge px-4 py-3 text-center">Netlify</div>
                 </div>
             </div>
+            
+            <!-- Documentation Link -->
+            <div class="dark-nordic-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-4">Complete Documentation</h2>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Explore detailed documentation including technical architecture, API details, and implementation guide.
+                </p>
+                <div class="flex gap-3 flex-wrap">
+                    <a href="app-docs/pathfinders.html" class="inline-block bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium">
+                        📖 View Documentation →
+                    </a>
+                </div>
+            </div>
 
             <!-- CTA -->
             <div class="text-center">
@@ -411,5 +640,27 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function showJourney(journeyId) {
+            // Hide all journey contents
+            const contents = document.querySelectorAll('.journey-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.journey-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected journey
+            document.getElementById(journeyId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
