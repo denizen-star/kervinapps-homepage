@@ -222,6 +222,7 @@
                 font-size: 0.95rem;
             }
         }
+        .collapsible-card{cursor:pointer;transition:all .3s ease}.collapsible-card:hover{border-color:rgba(107,122,143,.3)}.collapsible-header{display:flex;justify-content:space-between;align-items:center}.collapse-icon{transition:transform .3s ease;color:#9ca3af;font-size:1.5rem;font-weight:300}.collapsible-card.expanded .collapse-icon{transform:rotate(180deg)}.collapsible-content{max-height:0;overflow:hidden;transition:max-height .4s ease}.collapsible-card.expanded .collapsible-content{max-height:3000px}.journey-tabs{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}.journey-tab{background:#2a2f3a;color:#8b92a3;border:1px solid #3a3f4b;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.95rem;transition:all .3s ease}.journey-tab:hover{background:#3a3f4b;color:#d1d5db;border-color:#4a5568}.journey-tab.active{background:#4a5568;color:#fff;border-color:#6b7a8f}.journey-content{display:none}.journey-content.active{display:block}.journey-description{color:#d1d5db;line-height:1.7;margin-bottom:24px;font-size:1rem}.timeline-container{position:relative;padding:20px 0}.timeline-line{position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4a5568 0%,#6b7a8f 100%)}.timeline-step{position:relative;padding-left:80px;margin-bottom:32px}.timeline-step:last-child{margin-bottom:0}.timeline-dot{position:absolute;left:18px;top:8px;width:28px;height:28px;border-radius:50%;background:#4a5568;border:3px solid #1a1d23;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;z-index:2}.timeline-dot.success{background:#6b7a8f}.timeline-content h3{color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:4px}.timeline-content p{color:#9ca3af;font-size:.875rem;line-height:1.5}
     </style>
 </head>
 <body class="min-h-screen">
@@ -262,6 +263,49 @@
                     The application uses smart algorithms to find optimal times for your habits based on your calendar availability, energy levels, and past performance data.
                 </p>
             </div>
+
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+            <div class="collapsible-header"><h2 class="text-2xl font-semibold text-white">Journey</h2><span class="collapse-icon">▼</span></div>
+            <div class="collapsible-content">
+            <div class="journey-tabs">
+            <button class="journey-tab active" onclick="showJourney('getting-started')">Getting Started</button>
+            <button class="journey-tab" onclick="showJourney('daily-use')">Daily Use</button>
+            <button class="journey-tab" onclick="showJourney('advanced-features')">Advanced Features</button>
+            </div>
+            <div id="getting-started" class="journey-content active">
+            <p class="journey-description">New users analyze their first processes and begin optimizing workflows.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Sign Up</h3><p>Create your account and access the optimization platform</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Map Current Process</h3><p>Document your existing workflow or process steps</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Run Analysis</h3><p>Let AI analyze inefficiencies and bottlenecks</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Review Insights</h3><p>Examine recommendations for process improvements</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Implement Changes</h3><p>Apply suggested optimizations to your workflow</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Measure Impact</h3><p>Track efficiency gains and time saved</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Continuous Improvement</h3><p>Iterate and refine for ongoing optimization</p></div></div>
+            </div></div>
+            <div id="daily-use" class="journey-content">
+            <p class="journey-description">Regular users continuously optimize processes and monitor efficiency gains.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Open Dashboard</h3><p>View current process performance metrics</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Check Recommendations</h3><p>Review new optimization suggestions from AI</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Prioritize Actions</h3><p>Identify highest-impact improvements</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Test Changes</h3><p>Run pilot tests for proposed optimizations</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Deploy Solutions</h3><p>Roll out successful improvements across workflows</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Track Metrics</h3><p>Monitor KPIs and efficiency indicators</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Refine Continuously</h3><p>Keep iterating for marginal gains</p></div></div>
+            </div></div>
+            <div id="advanced-features" class="journey-content">
+            <p class="journey-description">Power users leverage automation, predictive analytics, and enterprise-scale optimization.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Access Advanced Analytics</h3><p>View comprehensive process intelligence reports</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Set Up Automation</h3><p>Configure automated workflow optimizations</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Predictive Modeling</h3><p>Forecast future bottlenecks and inefficiencies</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Multi-Process Optimization</h3><p>Optimize across multiple workflows simultaneously</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Custom Metrics</h3><p>Define and track organization-specific KPIs</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Team Collaboration</h3><p>Share insights and coordinate optimization efforts</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Scale Operations</h3><p>Apply optimization strategies enterprise-wide</p></div></div>
+            </div></div>
+            </div></div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -316,5 +360,9 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleJourneyCard(){document.querySelector('.collapsible-card').classList.toggle('expanded')}
+    function showJourney(a){event.stopPropagation();document.querySelectorAll('.journey-content').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.journey-tab').forEach(b=>b.classList.remove('active'));document.getElementById(a).classList.add('active');event.target.classList.add('active')}
+    </script>
 </body>
 </html>

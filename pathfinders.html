@@ -5,32 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinders - Learn More | KervinApps</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'dark',
-            themeVariables: {
-                primaryColor: '#4a5568',
-                primaryTextColor: '#ffffff',
-                primaryBorderColor: '#6b7a8f',
-                lineColor: '#8b92a3',
-                secondaryColor: '#2d7d5e',
-                tertiaryColor: '#3a3f4b',
-                background: '#242931',
-                mainBkg: '#242931',
-                secondBkg: '#2a2f3a',
-                border1: '#6b7a8f',
-                border2: '#5a6a7f',
-                note: '#3a3f4b',
-                noteBkgColor: '#2a2f3a',
-                noteTextColor: '#d1d5db',
-                noteBorderColor: '#6b7a8f',
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '14px'
-            }
-        });
-    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -346,10 +320,46 @@
             margin-bottom: 32px;
         }
         
+        .collapsible-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible-card:hover {
+            border-color: rgba(107, 122, 143, 0.3);
+        }
+        
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .collapse-icon {
+            transition: transform 0.3s ease;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .collapsible-card.expanded .collapse-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .collapsible-card.expanded .collapsible-content {
+            max-height: 3000px;
+        }
+        
         .journey-tabs {
             display: flex;
             gap: 12px;
-            margin-bottom: 24px;
+            margin: 24px 0;
             flex-wrap: wrap;
         }
         
@@ -385,26 +395,71 @@
             display: block;
         }
         
-        .journey-diagram {
-            background: rgba(26, 29, 35, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 16px;
-            overflow-x: auto;
-        }
-        
-        .journey-diagram .mermaid {
-            display: flex;
-            justify-content: center;
-            min-height: 300px;
-        }
-        
         .journey-description {
             color: #d1d5db;
             line-height: 1.7;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             font-size: 1rem;
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4a5568 0%, #2d7d5e 100%);
+        }
+        
+        .timeline-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 32px;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 18px;
+            top: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #4a5568;
+            border: 3px solid #242931;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .timeline-dot.success {
+            background: #2d7d5e;
+        }
+        
+        .timeline-content h3 {
+            color: #ffffff;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.5;
         }
         
         @media (max-width: 768px) {
@@ -481,9 +536,14 @@
                 </p>
             </div>
 
-            <!-- User Journey -->
-            <div class="journey-container">
-                <h2 class="text-2xl font-semibold text-white mb-6">User Journey</h2>
+            <!-- Journey (Collapsible) -->
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+                <div class="collapsible-header">
+                    <h2 class="text-2xl font-semibold text-white">Journey</h2>
+                    <span class="collapse-icon">▼</span>
+                </div>
+                
+                <div class="collapsible-content">
                 
                 <!-- Journey Tabs -->
                 <div class="journey-tabs">
@@ -497,38 +557,63 @@
                     <p class="journey-description">
                         New users begin their Pathfinders experience by setting up their profile and learning how to collect professional contact information efficiently at networking events.
                     </p>
-                    <div class="journey-diagram">
-                        <div class="mermaid">
-                            flowchart TD
-                                A[Visit Pathfinders] --> B{First Time User?}
-                                B -->|Yes| C[View Welcome Screen]
-                                B -->|No| D[Go to Dashboard]
-                                C --> E[Review Platform Overview]
-                                E --> F[Access Data Collection Form]
-                                F --> G{Choose Entry Method}
-                                G -->|Manual Entry| H[Fill Out Contact Form]
-                                G -->|Quick Scan| I[Use QR Code Scanner]
-                                H --> J[Enter Name & Email]
-                                J --> K[Add Professional Details]
-                                K --> L[Add Demographic Info]
-                                I --> L
-                                L --> M[Preview Entry]
-                                M --> N{Data Correct?}
-                                N -->|No| O[Edit Information]
-                                O --> M
-                                N -->|Yes| P[Submit to Google Sheets]
-                                P --> Q[Success Confirmation]
-                                Q --> R[Ready for Next Contact]
-                                
-                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style C fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style D fill:#2d7d5e,stroke:#3a9975,color:#ffffff
-                                style P fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style Q fill:#2d7d5e,stroke:#3a9975,color:#ffffff
-                                style R fill:#2d7d5e,stroke:#3a9975,color:#ffffff
-                                style B fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
-                                style G fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
-                                style N fill:#3a3f4b,stroke:#6b7a8f,color:#ffffff
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Visit Pathfinders</h3>
+                                <p>Access the platform via web browser or mobile app to begin your networking journey</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Complete Onboarding</h3>
+                                <p>First-time users view welcome screen and platform overview to understand key features</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Access Data Collection Form</h3>
+                                <p>Navigate to the contact entry interface from your dashboard</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Choose Entry Method</h3>
+                                <p>Select between manual form entry for detailed information or QR code scanning for quick capture</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <h3>Enter Contact Information</h3>
+                                <p>Fill in name, email, professional details, industry, and relevant demographic data</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">6</div>
+                            <div class="timeline-content">
+                                <h3>Preview and Verify</h3>
+                                <p>Review all entered information for accuracy and make any necessary corrections</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Submit to Google Sheets</h3>
+                                <p>Data automatically syncs to your connected Google Sheets database in real-time</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">8</div>
+                            <div class="timeline-content">
+                                <h3>Success Confirmation</h3>
+                                <p>Receive confirmation message and system prepares for next contact entry</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,21 +623,56 @@
                     <p class="journey-description">
                         During networking events, users efficiently collect contact information with real-time synchronization to their data management system.
                     </p>
-                    <div class="journey-diagram">
-                        <div class="mermaid">
-                            flowchart TD
-                                A[Arrive at Event] --> B[Open App]
-                                B --> C[Meet Contact]
-                                C --> D[Collect Info]
-                                D --> E[Save to Sheets]
-                                E --> F[Sync Complete]
-                                F --> G[End Session]
-                                
-                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style B fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style E fill:#2d7d5e,stroke:#3a9975,color:#ffffff
-                                style F fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style G fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Arrive at Networking Event</h3>
+                                <p>Bring your mobile device or laptop with Pathfinders already loaded and ready</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Open Pathfinders App</h3>
+                                <p>Launch the application and select the current event context for organized data collection</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Meet New Contact</h3>
+                                <p>Engage in conversation and determine if you'd like to add them to your network</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Collect Contact Information</h3>
+                                <p>Quickly capture their details using the streamlined data entry form</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Auto-Save to Google Sheets</h3>
+                                <p>Data is immediately synchronized to your cloud database with no manual intervention</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Sync Confirmation</h3>
+                                <p>Receive instant feedback that the contact has been successfully saved</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Continue Networking</h3>
+                                <p>Move on to your next contact or review all entries collected during the event</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -562,24 +682,59 @@
                     <p class="journey-description">
                         Power users leverage demographic matching algorithms and data analytics to build meaningful professional relationships based on shared backgrounds and interests.
                     </p>
-                    <div class="journey-diagram">
-                        <div class="mermaid">
-                            flowchart TD
-                                A[Access Dashboard] --> B[View Contacts]
-                                B --> C[Run Demographics]
-                                C --> D[View Matches]
-                                D --> E[Create Groups]
-                                E --> F[Export Data]
-                                F --> G[Schedule Followups]
-                                G --> H[Success]
-                                
-                                style A fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style C fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style E fill:#2d7d5e,stroke:#3a9975,color:#ffffff
-                                style F fill:#4a5568,stroke:#6b7a8f,color:#ffffff
-                                style H fill:#2d7d5e,stroke:#3a9975,color:#ffffff
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Access Analytics Dashboard</h3>
+                                <p>Log into your comprehensive dashboard to view all collected contacts and analytics</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Review All Contacts</h3>
+                                <p>Browse through your complete network database with filtering and search capabilities</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Run Demographic Matching</h3>
+                                <p>Use intelligent algorithms to find connections based on shared demographics and interests</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Review Match Results</h3>
+                                <p>Analyze potential connections and identify networking opportunities</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Create Connection Groups</h3>
+                                <p>Organize matched contacts into strategic groups for targeted outreach</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">6</div>
+                            <div class="timeline-content">
+                                <h3>Export Data</h3>
+                                <p>Download your network data in various formats for external use or analysis</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Schedule Follow-ups</h3>
+                                <p>Plan and track follow-up activities to maintain and strengthen professional relationships</p>
+                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -642,7 +797,15 @@
     </div>
     
     <script>
+        function toggleJourneyCard() {
+            const card = document.querySelector('.collapsible-card');
+            card.classList.toggle('expanded');
+        }
+        
         function showJourney(journeyId) {
+            // Prevent event bubbling to collapsible card
+            event.stopPropagation();
+            
             // Hide all journey contents
             const contents = document.querySelectorAll('.journey-content');
             contents.forEach(content => {

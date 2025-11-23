@@ -207,6 +207,7 @@
                 font-size: 0.95rem;
             }
         }
+        .collapsible-card{cursor:pointer;transition:all .3s ease}.collapsible-card:hover{border-color:rgba(107,122,143,.3)}.collapsible-header{display:flex;justify-content:space-between;align-items:center}.collapse-icon{transition:transform .3s ease;color:#9ca3af;font-size:1.5rem;font-weight:300}.collapsible-card.expanded .collapse-icon{transform:rotate(180deg)}.collapsible-content{max-height:0;overflow:hidden;transition:max-height .4s ease}.collapsible-card.expanded .collapsible-content{max-height:3000px}.journey-tabs{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}.journey-tab{background:#2a2f3a;color:#8b92a3;border:1px solid #3a3f4b;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.95rem;transition:all .3s ease}.journey-tab:hover{background:#3a3f4b;color:#d1d5db;border-color:#4a5568}.journey-tab.active{background:#4a5568;color:#fff;border-color:#6b7a8f}.journey-content{display:none}.journey-content.active{display:block}.journey-description{color:#d1d5db;line-height:1.7;margin-bottom:24px;font-size:1rem}.timeline-container{position:relative;padding:20px 0}.timeline-line{position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4a5568 0%,#6b7a8f 100%)}.timeline-step{position:relative;padding-left:80px;margin-bottom:32px}.timeline-step:last-child{margin-bottom:0}.timeline-dot{position:absolute;left:18px;top:8px;width:28px;height:28px;border-radius:50%;background:#4a5568;border:3px solid #1a1d23;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;z-index:2}.timeline-dot.success{background:#6b7a8f}.timeline-content h3{color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:4px}.timeline-content p{color:#9ca3af;font-size:.875rem;line-height:1.5}
     </style>
 </head>
 <body class="min-h-screen">
@@ -247,6 +248,49 @@
                     The platform features a mobile-first design, dynamic content management, real-time search capabilities, and SEO optimization - all while maintaining a clean, professional presentation focused on data architecture topics.
                 </p>
             </div>
+
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+            <div class="collapsible-header"><h2 class="text-2xl font-semibold text-white">Journey</h2><span class="collapse-icon">▼</span></div>
+            <div class="collapsible-content">
+            <div class="journey-tabs">
+            <button class="journey-tab active" onclick="showJourney('getting-started')">Reader</button>
+            <button class="journey-tab" onclick="showJourney('daily-use')">Content Creator</button>
+            <button class="journey-tab" onclick="showJourney('advanced-features')">Technical Writer</button>
+            </div>
+            <div id="getting-started" class="journey-content active">
+            <p class="journey-description">Readers discover data architecture insights and enterprise data strategy content through mobile-optimized platform.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Discover Kblog</h3><p>Find professional blog focused on data architecture topics</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Browse Content</h3><p>Navigate mobile-first responsive design on any device</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Use Real-Time Search</h3><p>Find specific data architecture topics quickly</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Read Technical Articles</h3><p>Consume enterprise data strategy insights and best practices</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Explore Related Topics</h3><p>Navigate through connected data architecture content</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Access on Mobile</h3><p>Read seamlessly across devices with mobile-optimized layout</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Return for Updates</h3><p>Bookmark blog for ongoing data architecture insights</p></div></div>
+            </div></div>
+            <div id="daily-use" class="journey-content">
+            <p class="journey-description">Content creators manage dynamic content with environment-aware configuration and real-time publishing.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Access Content Management</h3><p>Log into dynamic content management system</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Create New Article</h3><p>Draft data architecture content with modern editor</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Add Technical Details</h3><p>Include enterprise data strategy concepts and examples</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Optimize for Search</h3><p>Implement SEO optimization for better discoverability</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Preview Responsive Design</h3><p>Check mobile and desktop layouts before publishing</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Publish Content</h3><p>Go live with environment-aware configuration</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Monitor Engagement</h3><p>Track reader engagement with published content</p></div></div>
+            </div></div>
+            <div id="advanced-features" class="journey-content">
+            <p class="journey-description">Technical writers leverage specialized platform features for in-depth data architecture documentation and thought leadership.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Develop Content Strategy</h3><p>Plan comprehensive data architecture article series</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Create Technical Documentation</h3><p>Write detailed enterprise data strategy guides</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Implement SEO Strategy</h3><p>Optimize technical content for search engine visibility</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Configure Environment Settings</h3><p>Manage environment-aware deployment configurations</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Enhance Search Capabilities</h3><p>Leverage real-time search for content discoverability</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Build Professional Brand</h3><p>Establish thought leadership in data architecture space</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Maintain Clean Presentation</h3><p>Deliver professional, focused data architecture content</p></div></div>
+            </div></div>
+            </div></div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -301,6 +345,10 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleJourneyCard(){document.querySelector('.collapsible-card').classList.toggle('expanded')}
+    function showJourney(a){event.stopPropagation();document.querySelectorAll('.journey-content').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.journey-tab').forEach(b=>b.classList.remove('active'));document.getElementById(a).classList.add('active');event.target.classList.add('active')}
+    </script>
 </body>
 </html>
 

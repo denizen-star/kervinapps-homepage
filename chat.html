@@ -207,6 +207,149 @@
                 font-size: 0.95rem;
             }
         }
+        
+        /* Journey Collapsible Card Styles */
+        .collapsible-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible-card:hover {
+            border-color: rgba(107, 122, 143, 0.3);
+        }
+        
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .collapse-icon {
+            transition: transform 0.3s ease;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .collapsible-card.expanded .collapse-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .collapsible-card.expanded .collapsible-content {
+            max-height: 3000px;
+        }
+        
+        .journey-tabs {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        
+        .journey-tab {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .journey-tab:hover {
+            background: #3a3f4b;
+            color: #d1d5db;
+            border-color: #4a5568;
+        }
+        
+        .journey-tab.active {
+            background: #4a5568;
+            color: #ffffff;
+            border-color: #6b7a8f;
+        }
+        
+        .journey-content {
+            display: none;
+        }
+        
+        .journey-content.active {
+            display: block;
+        }
+        
+        .journey-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #8b7332 0%, #c4a854 100%);
+        }
+        
+        .timeline-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 32px;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 18px;
+            top: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #8b7332;
+            border: 3px solid #1a1d23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .timeline-dot.success {
+            background: #c4a854;
+        }
+        
+        .timeline-content h3 {
+            color: #ffffff;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -246,6 +389,201 @@
                 <p class="text-gray-300 leading-relaxed">
                     The platform eliminates common chat app issues like "Unknown User" errors, UI flashing, and duplicate conversations through proper user management and clean data architecture.
                 </p>
+            </div>
+
+            <!-- Journey (Collapsible) -->
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+                <div class="collapsible-header">
+                    <h2 class="text-2xl font-semibold text-white">Journey</h2>
+                    <span class="collapse-icon">▼</span>
+                </div>
+                
+                <div class="collapsible-content">
+                
+                <!-- Journey Tabs -->
+                <div class="journey-tabs">
+                    <button class="journey-tab active" onclick="showJourney('getting-started')">Getting Started</button>
+                    <button class="journey-tab" onclick="showJourney('daily-use')">Daily Use</button>
+                    <button class="journey-tab" onclick="showJourney('advanced-features')">Advanced Features</button>
+                </div>
+                
+                <!-- Journey 1: Getting Started -->
+                <div id="getting-started" class="journey-content active">
+                    <p class="journey-description">
+                        New users begin their Common Grounds experience by creating an account and learning how to connect with others through real-time messaging.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Access Common Grounds</h3>
+                                <p>Visit the platform via web browser to begin your real-time chat experience</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Create Account</h3>
+                                <p>Sign up with your email and create a secure password using JWT authentication</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Set Up Profile</h3>
+                                <p>Enter your real name and profile information for professional communication</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Explore Interface</h3>
+                                <p>Familiarize yourself with the chat interface and navigation system</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <h3>Find Conversations</h3>
+                                <p>Browse available channels and direct messages to connect with others</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Send First Message</h3>
+                                <p>Start chatting with real-time message delivery and instant synchronization</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Join Community</h3>
+                                <p>Become an active participant in conversations and build connections</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 2: Daily Use -->
+                <div id="daily-use" class="journey-content">
+                    <p class="journey-description">
+                        Regular users efficiently communicate with team members and friends through seamless real-time messaging.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Log In</h3>
+                                <p>Access your account securely with JWT authentication</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Check Notifications</h3>
+                                <p>Review new messages and conversation updates from while you were away</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Select Conversation</h3>
+                                <p>Choose from your channels or direct messages to engage with</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">4</div>
+                            <div class="timeline-content">
+                                <h3>Send Messages</h3>
+                                <p>Type and send messages with instant real-time delivery</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Receive Responses</h3>
+                                <p>Get real-time updates as others reply to your messages</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Switch Conversations</h3>
+                                <p>Seamlessly move between multiple conversations without UI lag</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Stay Connected</h3>
+                                <p>Continue chatting throughout your day with reliable synchronization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 3: Advanced Features -->
+                <div id="advanced-features" class="journey-content">
+                    <p class="journey-description">
+                        Power users leverage advanced features like channel management, conversation organization, and user settings for optimal communication efficiency.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Access Dashboard</h3>
+                                <p>View your comprehensive conversation overview and statistics</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Manage Channels</h3>
+                                <p>Create, organize, or customize channels for different topics</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Organize Conversations</h3>
+                                <p>Use smart deduplication to keep your chat history clean and organized</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Configure Settings</h3>
+                                <p>Customize notification preferences and display options</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Moderate Content</h3>
+                                <p>Use moderation tools to maintain healthy community standards</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Export Data</h3>
+                                <p>Download conversation history and analytics from Google Sheets backend</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Optimize Experience</h3>
+                                <p>Fine-tune your setup for maximum productivity and communication efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
 
             <div class="dark-nordic-card p-8 mb-8">
@@ -303,6 +641,36 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function toggleJourneyCard() {
+            const card = document.querySelector('.collapsible-card');
+            card.classList.toggle('expanded');
+        }
+        
+        function showJourney(journeyId) {
+            // Prevent event bubbling to collapsible card
+            event.stopPropagation();
+            
+            // Hide all journey contents
+            const contents = document.querySelectorAll('.journey-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.journey-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected journey
+            document.getElementById(journeyId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
 

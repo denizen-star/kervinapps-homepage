@@ -207,6 +207,7 @@
                 font-size: 0.95rem;
             }
         }
+        .collapsible-card{cursor:pointer;transition:all .3s ease}.collapsible-card:hover{border-color:rgba(107,122,143,.3)}.collapsible-header{display:flex;justify-content:space-between;align-items:center}.collapse-icon{transition:transform .3s ease;color:#9ca3af;font-size:1.5rem;font-weight:300}.collapsible-card.expanded .collapse-icon{transform:rotate(180deg)}.collapsible-content{max-height:0;overflow:hidden;transition:max-height .4s ease}.collapsible-card.expanded .collapsible-content{max-height:3000px}.journey-tabs{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}.journey-tab{background:#2a2f3a;color:#8b92a3;border:1px solid #3a3f4b;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.95rem;transition:all .3s ease}.journey-tab:hover{background:#3a3f4b;color:#d1d5db;border-color:#4a5568}.journey-tab.active{background:#4a5568;color:#fff;border-color:#6b7a8f}.journey-content{display:none}.journey-content.active{display:block}.journey-description{color:#d1d5db;line-height:1.7;margin-bottom:24px;font-size:1rem}.timeline-container{position:relative;padding:20px 0}.timeline-line{position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4a5568 0%,#6b7a8f 100%)}.timeline-step{position:relative;padding-left:80px;margin-bottom:32px}.timeline-step:last-child{margin-bottom:0}.timeline-dot{position:absolute;left:18px;top:8px;width:28px;height:28px;border-radius:50%;background:#4a5568;border:3px solid #1a1d23;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;z-index:2}.timeline-dot.success{background:#6b7a8f}.timeline-content h3{color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:4px}.timeline-content p{color:#9ca3af;font-size:.875rem;line-height:1.5}
     </style>
 </head>
 <body class="min-h-screen">
@@ -247,6 +248,49 @@
                     The app focuses on making financial planning accessible and actionable, with clear visualizations and practical insights that help you make informed decisions about your money.
                 </p>
             </div>
+
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+            <div class="collapsible-header"><h2 class="text-2xl font-semibold text-white">Journey</h2><span class="collapse-icon">▼</span></div>
+            <div class="collapsible-content">
+            <div class="journey-tabs">
+            <button class="journey-tab active" onclick="showJourney('getting-started')">Getting Started</button>
+            <button class="journey-tab" onclick="showJourney('daily-use')">Daily Use</button>
+            <button class="journey-tab" onclick="showJourney('advanced-features')">Advanced Features</button>
+            </div>
+            <div id="getting-started" class="journey-content active">
+            <p class="journey-description">New users set up their financial profile and begin tracking income and expenses.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Create Account</h3><p>Sign up and access your personal financial dashboard</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Set Financial Goals</h3><p>Define savings targets, budget limits, and financial objectives</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Add Income Sources</h3><p>Enter salary, side income, and other revenue streams</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Categorize Expenses</h3><p>Set up expense categories for organized tracking</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Record First Transactions</h3><p>Start tracking your daily income and expenses</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>View Initial Analytics</h3><p>Review your financial overview and spending patterns</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Begin Financial Journey</h3><p>Start making data-driven financial decisions</p></div></div>
+            </div></div>
+            <div id="daily-use" class="journey-content">
+            <p class="journey-description">Regular users efficiently track transactions and monitor their financial health in real-time.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Open Dashboard</h3><p>View your current financial status at a glance</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Log Transactions</h3><p>Quickly add new income or expenses as they occur</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Review Budget Status</h3><p>Check spending against your budget categories</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Track Goals Progress</h3><p>Monitor advancement toward your savings targets</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Receive Alerts</h3><p>Get notifications for budget limits and financial milestones</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Analyze Patterns</h3><p>Review spending trends and identify optimization opportunities</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Adjust Plans</h3><p>Update budgets and goals based on your financial progress</p></div></div>
+            </div></div>
+            <div id="advanced-features" class="journey-content">
+            <p class="journey-description">Power users leverage forecasting, investments tracking, and comprehensive financial analytics.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Access Advanced Analytics</h3><p>View detailed financial reports and projections</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Set Up Investment Tracking</h3><p>Monitor stocks, crypto, and other investment portfolios</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Create Financial Forecasts</h3><p>Project future financial status based on current trends</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Automate Transactions</h3><p>Set up recurring income and expense entries</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Export Financial Data</h3><p>Download reports for tax preparation or analysis</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Multi-Currency Support</h3><p>Track finances across different currencies and accounts</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Optimize Wealth</h3><p>Make strategic decisions using comprehensive financial insights</p></div></div>
+            </div></div>
+            </div></div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -293,5 +337,9 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleJourneyCard(){document.querySelector('.collapsible-card').classList.toggle('expanded')}
+    function showJourney(a){event.stopPropagation();document.querySelectorAll('.journey-content').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.journey-tab').forEach(b=>b.classList.remove('active'));document.getElementById(a).classList.add('active');event.target.classList.add('active')}
+    </script>
 </body>
 </html>

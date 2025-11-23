@@ -207,6 +207,149 @@
                 font-size: 0.95rem;
             }
         }
+        
+        /* Journey Collapsible Card Styles */
+        .collapsible-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible-card:hover {
+            border-color: rgba(107, 122, 143, 0.3);
+        }
+        
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .collapse-icon {
+            transition: transform 0.3s ease;
+            color: #9ca3af;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .collapsible-card.expanded .collapse-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .collapsible-card.expanded .collapsible-content {
+            max-height: 3000px;
+        }
+        
+        .journey-tabs {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        
+        .journey-tab {
+            background: #2a2f3a;
+            color: #8b92a3;
+            border: 1px solid #3a3f4b;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .journey-tab:hover {
+            background: #3a3f4b;
+            color: #d1d5db;
+            border-color: #4a5568;
+        }
+        
+        .journey-tab.active {
+            background: #4a5568;
+            color: #ffffff;
+            border-color: #6b7a8f;
+        }
+        
+        .journey-content {
+            display: none;
+        }
+        
+        .journey-content.active {
+            display: block;
+        }
+        
+        .journey-description {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #4a5568 0%, #6b7a8f 100%);
+        }
+        
+        .timeline-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 32px;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 18px;
+            top: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #4a5568;
+            border: 3px solid #1a1d23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .timeline-dot.success {
+            background: #6b7a8f;
+        }
+        
+        .timeline-content h3 {
+            color: #ffffff;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -246,6 +389,201 @@
                 <p class="text-gray-300 leading-relaxed">
                     Using intelligent matching algorithms and location-based features, the app helps professionals discover and connect with like-minded individuals in their immediate vicinity.
                 </p>
+            </div>
+
+            <!-- Journey (Collapsible) -->
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+                <div class="collapsible-header">
+                    <h2 class="text-2xl font-semibold text-white">Journey</h2>
+                    <span class="collapse-icon">▼</span>
+                </div>
+                
+                <div class="collapsible-content">
+                
+                <!-- Journey Tabs -->
+                <div class="journey-tabs">
+                    <button class="journey-tab active" onclick="showJourney('getting-started')">Getting Started</button>
+                    <button class="journey-tab" onclick="showJourney('daily-use')">Daily Use</button>
+                    <button class="journey-tab" onclick="showJourney('advanced-features')">Advanced Features</button>
+                </div>
+                
+                <!-- Journey 1: Getting Started -->
+                <div id="getting-started" class="journey-content active">
+                    <p class="journey-description">
+                        New users begin their Community Builder experience by creating a profile and discovering local professionals in their area.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Download Community Builder</h3>
+                                <p>Install the app from the app store and create your account</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Set Up Profile</h3>
+                                <p>Add your professional information, interests, and areas of expertise</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Enable Location Services</h3>
+                                <p>Allow the app to discover professionals and events in your local area</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Browse Local Community</h3>
+                                <p>Explore nearby professionals and professional hubs in your area</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Make First Connection</h3>
+                                <p>Send your first connection request to a relevant professional</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Join Your First Event</h3>
+                                <p>RSVP to a local networking event or meetup in your area</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Build Your Network</h3>
+                                <p>Start building meaningful in-person connections within your community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 2: Daily Use -->
+                <div id="daily-use" class="journey-content">
+                    <p class="journey-description">
+                        Regular users efficiently discover and connect with professionals in their area through location-based features and AI-powered matching.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Open App</h3>
+                                <p>Launch Community Builder to see nearby professionals and events</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Check Notifications</h3>
+                                <p>Review new connection requests and event invitations</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Discover Matches</h3>
+                                <p>View AI-powered recommendations for relevant connections</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">4</div>
+                            <div class="timeline-content">
+                                <h3>Send Connection Requests</h3>
+                                <p>Reach out to professionals who align with your interests</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Browse Local Events</h3>
+                                <p>Find and RSVP to networking events happening nearby</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Attend Meetups</h3>
+                                <p>Meet connections in person at local professional gatherings</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Stay Engaged</h3>
+                                <p>Continue building relationships through regular interactions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 3: Advanced Features -->
+                <div id="advanced-features" class="journey-content">
+                    <p class="journey-description">
+                        Power users leverage advanced features like community management, event hosting, and analytics to maximize their networking impact.
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h3>Access Analytics Dashboard</h3>
+                                <p>View insights about your network growth and engagement metrics</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h3>Create Professional Hub</h3>
+                                <p>Establish your own local community hub for your industry</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h3>Host Networking Events</h3>
+                                <p>Organize and promote local meetups for your community</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h3>Customize Match Preferences</h3>
+                                <p>Fine-tune AI matching algorithms to find most relevant connections</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">5</div>
+                            <div class="timeline-content">
+                                <h3>Manage Community Members</h3>
+                                <p>Moderate your hub and facilitate meaningful introductions</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">6</div>
+                            <div class="timeline-content">
+                                <h3>Track Event Performance</h3>
+                                <p>Analyze attendance and engagement from your hosted events</p>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot success">7</div>
+                            <div class="timeline-content">
+                                <h3>Scale Your Impact</h3>
+                                <p>Expand your reach and become a key connector in your professional community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
 
             <div class="dark-nordic-card p-8 mb-8">
@@ -294,5 +632,35 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function toggleJourneyCard() {
+            const card = document.querySelector('.collapsible-card');
+            card.classList.toggle('expanded');
+        }
+        
+        function showJourney(journeyId) {
+            // Prevent event bubbling to collapsible card
+            event.stopPropagation();
+            
+            // Hide all journey contents
+            const contents = document.querySelectorAll('.journey-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.journey-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected journey
+            document.getElementById(journeyId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>

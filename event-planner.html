@@ -207,6 +207,9 @@
                 font-size: 0.95rem;
             }
         }
+        
+        /* Journey Collapsible Card Styles */
+        .collapsible-card{cursor:pointer;transition:all .3s ease}.collapsible-card:hover{border-color:rgba(107,122,143,.3)}.collapsible-header{display:flex;justify-content:space-between;align-items:center}.collapse-icon{transition:transform .3s ease;color:#9ca3af;font-size:1.5rem;font-weight:300}.collapsible-card.expanded .collapse-icon{transform:rotate(180deg)}.collapsible-content{max-height:0;overflow:hidden;transition:max-height .4s ease}.collapsible-card.expanded .collapsible-content{max-height:3000px}.journey-tabs{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}.journey-tab{background:#2a2f3a;color:#8b92a3;border:1px solid #3a3f4b;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.95rem;transition:all .3s ease}.journey-tab:hover{background:#3a3f4b;color:#d1d5db;border-color:#4a5568}.journey-tab.active{background:#4a5568;color:#fff;border-color:#6b7a8f}.journey-content{display:none}.journey-content.active{display:block}.journey-description{color:#d1d5db;line-height:1.7;margin-bottom:24px;font-size:1rem}.timeline-container{position:relative;padding:20px 0}.timeline-line{position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4a5568 0%,#6b7a8f 100%)}.timeline-step{position:relative;padding-left:80px;margin-bottom:32px}.timeline-step:last-child{margin-bottom:0}.timeline-dot{position:absolute;left:18px;top:8px;width:28px;height:28px;border-radius:50%;background:#4a5568;border:3px solid #1a1d23;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;z-index:2}.timeline-dot.success{background:#6b7a8f}.timeline-content h3{color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:4px}.timeline-content p{color:#9ca3af;font-size:.875rem;line-height:1.5}
     </style>
 </head>
 <body class="min-h-screen">
@@ -252,6 +255,50 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Journey -->
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+            <div class="collapsible-header"><h2 class="text-2xl font-semibold text-white">Journey</h2><span class="collapse-icon">▼</span></div>
+            <div class="collapsible-content">
+            <div class="journey-tabs">
+            <button class="journey-tab active" onclick="showJourney('getting-started')">Event Organizer</button>
+            <button class="journey-tab" onclick="showJourney('daily-use')">Attendee</button>
+            <button class="journey-tab" onclick="showJourney('advanced-features')">Admin</button>
+            </div>
+            <div id="getting-started" class="journey-content active">
+            <p class="journey-description">Event organizers create professional events with comprehensive details and manage registrations.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Access Event Platform</h3><p>Log in to begin creating your professional event</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Create Event Details</h3><p>Enter venue information, date/time, and custom descriptions</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Set Capacity Limits</h3><p>Configure maximum attendees and enable waitlist management</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Configure Digital Waivers</h3><p>Set up customizable legal agreements with signature capture</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Add Location Mapping</h3><p>Integrate Mapbox with pin-point accuracy and directions</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Publish Event</h3><p>Launch event and share registration link with target audience</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Monitor Registrations</h3><p>Track real-time signups and automatic capacity management</p></div></div>
+            </div></div>
+            <div id="daily-use" class="journey-content">
+            <p class="journey-description">Attendees discover events, complete registration with waivers, and receive instant confirmation.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Receive Event Link</h3><p>Access shareable event URL from organizer</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>View Event Details</h3><p>Review comprehensive venue, date/time, and event information</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Check Map Location</h3><p>View interactive Mapbox with directions and nearby landmarks</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Verify Availability</h3><p>See real-time capacity status and available spots</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Complete Registration</h3><p>Fill out signup form with required participant information</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Sign Digital Waiver</h3><p>Complete waiver with digital signature and timestamp verification</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Receive Confirmation</h3><p>Get instant confirmation email with all event details</p></div></div>
+            </div></div>
+            <div id="advanced-features" class="journey-content">
+            <p class="journey-description">Admins manage multi-event operations with powerful dashboard, analytics, and compliance tracking.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Access Admin Dashboard</h3><p>View all events with aggregate registration metrics</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Manage Multiple Events</h3><p>Oversee simultaneous events with independent capacity limits</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Track Attendee Check-ins</h3><p>Monitor attendance and manage on-site check-in process</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Review Waiver Compliance</h3><p>Access full audit trail with timestamps and digital signatures</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Export Participant Data</h3><p>Download registrant information for analysis and communication</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Generate Analytics Reports</h3><p>Track trends, demographics, and capacity utilization</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Manage Recurring Events</h3><p>Create templates for regular programming and event series</p></div></div>
+            </div></div>
+            </div></div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -449,6 +496,10 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleJourneyCard(){document.querySelector('.collapsible-card').classList.toggle('expanded')}
+    function showJourney(a){event.stopPropagation();document.querySelectorAll('.journey-content').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.journey-tab').forEach(b=>b.classList.remove('active'));document.getElementById(a).classList.add('active');event.target.classList.add('active')}
+    </script>
 </body>
 </html>
 

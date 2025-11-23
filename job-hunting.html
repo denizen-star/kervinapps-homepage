@@ -207,6 +207,7 @@
                 font-size: 0.95rem;
             }
         }
+        .collapsible-card{cursor:pointer;transition:all .3s ease}.collapsible-card:hover{border-color:rgba(107,122,143,.3)}.collapsible-header{display:flex;justify-content:space-between;align-items:center}.collapse-icon{transition:transform .3s ease;color:#9ca3af;font-size:1.5rem;font-weight:300}.collapsible-card.expanded .collapse-icon{transform:rotate(180deg)}.collapsible-content{max-height:0;overflow:hidden;transition:max-height .4s ease}.collapsible-card.expanded .collapsible-content{max-height:3000px}.journey-tabs{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}.journey-tab{background:#2a2f3a;color:#8b92a3;border:1px solid #3a3f4b;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:500;font-size:.95rem;transition:all .3s ease}.journey-tab:hover{background:#3a3f4b;color:#d1d5db;border-color:#4a5568}.journey-tab.active{background:#4a5568;color:#fff;border-color:#6b7a8f}.journey-content{display:none}.journey-content.active{display:block}.journey-description{color:#d1d5db;line-height:1.7;margin-bottom:24px;font-size:1rem}.timeline-container{position:relative;padding:20px 0}.timeline-line{position:absolute;left:30px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4a5568 0%,#6b7a8f 100%)}.timeline-step{position:relative;padding-left:80px;margin-bottom:32px}.timeline-step:last-child{margin-bottom:0}.timeline-dot{position:absolute;left:18px;top:8px;width:28px;height:28px;border-radius:50%;background:#4a5568;border:3px solid #1a1d23;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;z-index:2}.timeline-dot.success{background:#6b7a8f}.timeline-content h3{color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:4px}.timeline-content p{color:#9ca3af;font-size:.875rem;line-height:1.5}
     </style>
 </head>
 <body class="min-h-screen">
@@ -247,6 +248,49 @@
                     With Hunter, you can apply to 10 jobs in the time it used to take for 1. It automatically creates tailored documents, tracks your applications, and helps you focus on the jobs where you have the best chance of success.
                 </p>
             </div>
+
+            <div class="dark-nordic-card p-8 mb-8 collapsible-card" onclick="toggleJourneyCard()">
+            <div class="collapsible-header"><h2 class="text-2xl font-semibold text-white">Journey</h2><span class="collapse-icon">▼</span></div>
+            <div class="collapsible-content">
+            <div class="journey-tabs">
+            <button class="journey-tab active" onclick="showJourney('getting-started')">Job Seeker Setup</button>
+            <button class="journey-tab" onclick="showJourney('daily-use')">Application Management</button>
+            <button class="journey-tab" onclick="showJourney('advanced-features')">Power User</button>
+            </div>
+            <div id="getting-started" class="journey-content active">
+            <p class="journey-description">Job seekers set up local AI environment and analyze their first job with intelligent matching.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Install Hunter & Ollama</h3><p>Set up application with local AI for complete privacy</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Upload Your Resume</h3><p>Add baseline resume to establish your skills and experience</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Paste Job Description</h3><p>Add job posting from any job board or company website</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">4</div><div class="timeline-content"><h3>Run Local AI Analysis</h3><p>AI calculates compatibility score and analyzes requirements</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Review Match Score (0-100%)</h3><p>View detailed compatibility breakdown with this position</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Generate Tailored Documents</h3><p>AI creates customized resume and cover letter for this role</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Track in Dashboard</h3><p>Add application to tracking system with status monitoring</p></div></div>
+            </div></div>
+            <div id="daily-use" class="journey-content">
+            <p class="journey-description">Active job seekers analyze multiple positions, compare matches, and manage application pipeline efficiently.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Open Visual Dashboard</h3><p>View all tracked applications with match scores and statuses</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Add Multiple Job Postings</h3><p>Paste job descriptions from various sources simultaneously</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Run Batch AI Analysis</h3><p>Process several positions to compare match percentages</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Review Technology Skills Breakdown</h3><p>View visual breakdown of matched, partial, and missing skills</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Generate Custom Documents</h3><p>Create tailored resumes and cover letters for top matches</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Extract Hiring Team Info</h3><p>Identify hiring managers and recruiters for networking outreach</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Update Application Status</h3><p>Track pipeline progress from submitted to interview to offer</p></div></div>
+            </div></div>
+            <div id="advanced-features" class="journey-content">
+            <p class="journey-description">Power users maximize local AI for deep analysis, document optimization, and strategic job targeting.</p>
+            <div class="timeline-container"><div class="timeline-line"></div>
+            <div class="timeline-step"><div class="timeline-dot">1</div><div class="timeline-content"><h3>Bulk Job Analysis</h3><p>Process multiple postings simultaneously for efficient comparison</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">2</div><div class="timeline-content"><h3>Deep Skills Gap Analysis</h3><p>Get detailed technology stack breakdown with match percentages</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot">3</div><div class="timeline-content"><h3>Qualification Assessment</h3><p>Review AI-generated qualification analyses for each role</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">4</div><div class="timeline-content"><h3>Optimize Custom Resumes</h3><p>Fine-tune AI-generated resumes for specific job requirements</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">5</div><div class="timeline-content"><h3>Focus on Best Matches</h3><p>Prioritize applications with highest success probability</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">6</div><div class="timeline-content"><h3>Privacy-First Processing</h3><p>Leverage local AI for complete data privacy and security</p></div></div>
+            <div class="timeline-step"><div class="timeline-dot success">7</div><div class="timeline-content"><h3>Apply 10x Faster</h3><p>Apply to 10 jobs in the time it used to take for 1</p></div></div>
+            </div></div>
+            </div></div>
 
             <div class="dark-nordic-card p-8 mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-6">Key Features</h2>
@@ -301,5 +345,9 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleJourneyCard(){document.querySelector('.collapsible-card').classList.toggle('expanded')}
+    function showJourney(a){event.stopPropagation();document.querySelectorAll('.journey-content').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.journey-tab').forEach(b=>b.classList.remove('active'));document.getElementById(a).classList.add('active');event.target.classList.add('active')}
+    </script>
 </body>
 </html>
