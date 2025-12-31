@@ -79,7 +79,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -206,6 +206,29 @@ strong {
     font-weight: 600;
 }
 
+.floating-try-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #2d7d5e 0%, #1e5d44 100%);
+    color: #ffffff;
+    padding: 16px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(45, 125, 94, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.floating-try-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(45, 125, 94, 0.6);
+    background: linear-gradient(135deg, #3a9d7a 0%, #2d7d5e 100%);
+}
+
 @media (max-width: 768px) {
     .content-wrapper {
         padding: 20px 15px;
@@ -229,6 +252,13 @@ strong {
     
     p, ul, ol {
         font-size: 1rem;
+    }
+    
+    .floating-try-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 24px;
+        font-size: 0.9rem;
     }
 }
 
@@ -1418,5 +1448,10 @@ strong {
             </div>
         </div>
     </div>
+    
+    <!-- Floating Try HunterApp Button -->
+    <a href="https://hunter.kervinapps.com/" class="floating-try-button" target="_blank" rel="noopener noreferrer">
+        Try HunterApp
+    </a>
 </body>
 </html>
